@@ -7,8 +7,8 @@ staging:
   clickpost_api_url: ${CLICKPOST_API_URL}
 
 prod:
-  internal_api_url: https://api.zippee.in
-  dashboard_url: https://dashboard.zippee.in
-  uniware_api_url: https://
-  easycom_api_url: https://
-  clickpost_api_url: https://
+  internal_api_url: ${INTERNAL_API_URL}
+  dashboard_url: ${DASHBOARD_URL}
+  uniware_api_url: ${UNIWARE_API_URL}
+  easycom_api_url: ${EASYCOM_API_URL}
+  clickpost_api_url: ${CLICKPOST_API_URL}

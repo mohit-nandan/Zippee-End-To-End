@@ -1,17 +1,26 @@
 import os
+import string
+import functools
+from pathlib import Path
+
 import yaml
 from dotenv import load_dotenv
 
 load_dotenv()
 
-_config_path = os.path.join(os.path.dirname(__file__), "..", "config", "config.yaml")
-_devices_path = os.path.join(os.path.dirname(__file__), "..", "config", "devices.yaml")
+_config_path = Path(__file__).resolve().parent.parent / "config" / "config.yaml"
+_devices_path = Path(__file__).resolve().parent.parent / "config" / "devices.yaml"
 
 
 def _expand_env(value: str) -> str:
-    if isinstance(value, str) and value.startswith("${") and value.endswith("}"):
-        key = value[2:-1]
-        return os.environ.get(key, "")
+    if isinstance(value, str) and "${" in value:
+        try:
+            return string.Template(value).substitute(os.environ)
+        except KeyError as exc:
+            raise EnvironmentError(
+                f"Required environment variable {exc} is not set. "
+                f"Copy .env.example to .env and fill in the value."
+            ) from exc
     return value
 
 
@@ -23,14 +32,25 @@ def _resolve(data):
     return _expand_env(data)
 
 
-def get_config() -> dict:
-    env = os.environ.get("ENV", "staging")
-    with open(_config_path) as f:
-        raw = yaml.safe_load(f)
+def _load_yaml(path: Path) -> dict:
+    try:
+        with open(path) as f:
+            return yaml.safe_load(f) or {}
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            f"Config file not found at {path}. "
+            "Ensure the file exists in the project root."
+        )
+
+
+@functools.lru_cache(maxsize=None)
+def get_config(env: str = None) -> dict:
+    env = env or os.environ.get("ENV", "staging")
+    raw = _load_yaml(_config_path)
     return _resolve(raw.get(env, {}))
 
 
+@functools.lru_cache(maxsize=None)
 def get_device_caps(platform: str) -> dict:
-    with open(_devices_path) as f:
-        raw = yaml.safe_load(f)
+    raw = _load_yaml(_devices_path)
     return _resolve(raw.get(platform, {}))

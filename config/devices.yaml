@@ -2,6 +2,7 @@ android:
   platformName: Android
   automationName: UIAutomator2
   deviceName: Pixel_6
+  udid: ${ANDROID_UDID}
   app: ./builds/rider-app.apk
   noReset: true
 
