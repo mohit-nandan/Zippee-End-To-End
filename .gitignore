@@ -1,5 +1,13 @@
 .env
 reports/
-__pycache__/
+**/__pycache__/
 *.pyc
+*.pyo
 .pytest_cache/
+*.log
+.DS_Store
+.venv/
+venv/
+builds/
+allure-results/
+.allure/
