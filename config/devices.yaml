@@ -1,0 +1,14 @@
+android:
+  platformName: Android
+  automationName: UIAutomator2
+  deviceName: Pixel_6
+  app: ./builds/rider-app.apk
+  noReset: true
+
+ios:
+  platformName: iOS
+  automationName: XCUITest
+  deviceName: iPhone 15
+  app: ./builds/rider-app.ipa
+  udid: ${IOS_UDID}
+  noReset: true
