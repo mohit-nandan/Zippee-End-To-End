@@ -1,15 +1,26 @@
 android:
   platformName: Android
   automationName: UIAutomator2
-  deviceName: Pixel_6
+  deviceName: Pixel_8
   udid: ${ANDROID_UDID}
-  app: ./builds/rider-app.apk
-  noReset: true
+  avd: Pixel_8
+  avdLaunchTimeout: 60000
+  avdReadyTimeout: 60000
+  app: ./builds/zippee-rider-staging.apk
+  appPackage: com.zippee.ridercod
+  appActivity: com.zippee.ridercod.MainActivity
+  autoGrantPermissions: true
+  noReset: false
+  fullReset: false
+  newCommandTimeout: 300
 
 ios:
   platformName: iOS
   automationName: XCUITest
   deviceName: iPhone 15
-  app: ./builds/rider-app.ipa
   udid: ${IOS_UDID}
-  noReset: true
+  app: ./builds/zippee-rider-staging.ipa
+  appPackage: com.zippee.ridercod
+  autoAcceptAlerts: true
+  noReset: false
+  newCommandTimeout: 300
