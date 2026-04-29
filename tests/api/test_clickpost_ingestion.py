@@ -6,7 +6,7 @@ from utils.data_factory import generate_order_payload
 BASE = "http://localhost:8003"
 
 def make_client():
-    return ClickpostClient(base_url=BASE, token="test-token")
+    return ClickpostClient(base_url=BASE, api_key="test-api-key", shipment_username="test-user", shipment_password="test-pass")
 
 @pytest.mark.smoke
 @pytest.mark.api

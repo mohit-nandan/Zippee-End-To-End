@@ -24,10 +24,10 @@ def page(browser_instance):
 @pytest.fixture
 def authenticated_dashboard(page):
     cfg = get_config()
-    page.goto(cfg["dashboard_url"] + "/login")
+    page.goto(cfg["dashboard_url"] + "/sign-in/")
     page.wait_for_load_state("networkidle")
-    page.locator("input[name='email']").fill(os.environ["DASHBOARD_USER"])
-    page.locator("input[name='password']").fill(os.environ["DASHBOARD_PASSWORD"])
+    page.locator("input[name='email']").fill(cfg["admin_user"])
+    page.locator("input[name='password']").fill(cfg["admin_pass"])
     page.locator("button[type='submit']").click()
     page.wait_for_load_state("networkidle")
     yield page
