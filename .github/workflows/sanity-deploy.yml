@@ -1,0 +1,52 @@
+name: Sanity Tests — Post Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to test"
+        required: true
+        default: "staging"
+        type: choice
+        options: [staging, prod]
+
+jobs:
+  sanity-api-web:
+    name: Sanity — API + Web
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+
+      - name: Run sanity tests (API + Web)
+        env:
+          ENV: ${{ github.event.inputs.environment }}
+          INTERNAL_API_URL: ${{ secrets.INTERNAL_API_URL }}
+          INTERNAL_API_TOKEN: ${{ secrets.INTERNAL_API_TOKEN }}
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+          DASHBOARD_USER: ${{ secrets.DASHBOARD_USER }}
+          DASHBOARD_PASSWORD: ${{ secrets.DASHBOARD_PASSWORD }}
+          UNIWARE_API_URL: ${{ secrets.UNIWARE_API_URL }}
+          UNIWARE_API_TOKEN: ${{ secrets.UNIWARE_API_TOKEN }}
+          EASYCOM_API_URL: ${{ secrets.EASYCOM_API_URL }}
+          EASYCOM_API_TOKEN: ${{ secrets.EASYCOM_API_TOKEN }}
+          CLICKPOST_API_URL: ${{ secrets.CLICKPOST_API_URL }}
+          CLICKPOST_API_TOKEN: ${{ secrets.CLICKPOST_API_TOKEN }}
+        run: pytest -m "sanity and not mobile" --alluredir=reports/allure-results -v
+
+      - name: Upload Allure results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sanity-allure-results
+          path: reports/allure-results/
+          retention-days: 7
