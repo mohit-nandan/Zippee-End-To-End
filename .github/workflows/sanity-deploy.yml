@@ -8,7 +8,7 @@ on:
         required: true
         default: "staging"
         type: choice
-        options: [staging, prod]
+        options: [staging, preprod, prod]
 
 jobs:
   sanity-api-web:
@@ -30,23 +30,48 @@ jobs:
       - name: Run sanity tests (API + Web)
         env:
           ENV: ${{ github.event.inputs.environment }}
-          INTERNAL_API_URL: ${{ secrets.INTERNAL_API_URL }}
-          INTERNAL_API_TOKEN: ${{ secrets.INTERNAL_API_TOKEN }}
-          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
-          DASHBOARD_USER: ${{ secrets.DASHBOARD_USER }}
-          DASHBOARD_PASSWORD: ${{ secrets.DASHBOARD_PASSWORD }}
-          UNIWARE_API_URL: ${{ secrets.UNIWARE_API_URL }}
-          UNIWARE_API_TOKEN: ${{ secrets.UNIWARE_API_TOKEN }}
-          EASYCOM_API_URL: ${{ secrets.EASYCOM_API_URL }}
-          EASYCOM_API_TOKEN: ${{ secrets.EASYCOM_API_TOKEN }}
-          CLICKPOST_API_URL: ${{ secrets.CLICKPOST_API_URL }}
-          CLICKPOST_API_TOKEN: ${{ secrets.CLICKPOST_API_TOKEN }}
+          # Staging
+          STAGING_BASE_URL: ${{ secrets.STAGING_BASE_URL }}
+          STAGING_ADMIN_USER: ${{ secrets.STAGING_ADMIN_USER }}
+          STAGING_ADMIN_PASS: ${{ secrets.STAGING_ADMIN_PASS }}
+          STAGING_DB_HOST: ${{ secrets.STAGING_DB_HOST }}
+          STAGING_DB_USER: ${{ secrets.STAGING_DB_USER }}
+          STAGING_DB_PASSWORD: ${{ secrets.STAGING_DB_PASSWORD }}
+          STAGING_DB_NAME: ${{ secrets.STAGING_DB_NAME }}
+          STAGING_DB_PORT: ${{ secrets.STAGING_DB_PORT }}
+          STAGING_CLICKPOST_API_KEY: ${{ secrets.STAGING_CLICKPOST_API_KEY }}
+          STAGING_CLICKPOST_SHIPMENT_API_USERNAME: ${{ secrets.STAGING_CLICKPOST_SHIPMENT_API_USERNAME }}
+          STAGING_CLICKPOST_SHIPMENT_API_PASSWORD: ${{ secrets.STAGING_CLICKPOST_SHIPMENT_API_PASSWORD }}
+          STAGING_UNIWARE_API_URL: ${{ secrets.STAGING_UNIWARE_API_URL }}
+          STAGING_EASYCOM_API_URL: ${{ secrets.STAGING_EASYCOM_API_URL }}
+          # Preprod
+          PREPROD_BASE_URL: ${{ secrets.PREPROD_BASE_URL }}
+          PREPROD_ADMIN_USER: ${{ secrets.PREPROD_ADMIN_USER }}
+          PREPROD_ADMIN_PASS: ${{ secrets.PREPROD_ADMIN_PASS }}
+          PREPROD_DB_HOST: ${{ secrets.PREPROD_DB_HOST }}
+          PREPROD_DB_USER: ${{ secrets.PREPROD_DB_USER }}
+          PREPROD_DB_PASSWORD: ${{ secrets.PREPROD_DB_PASSWORD }}
+          PREPROD_DB_NAME: ${{ secrets.PREPROD_DB_NAME }}
+          PREPROD_DB_PORT: ${{ secrets.PREPROD_DB_PORT }}
+          PREPROD_CLICKPOST_API_KEY: ${{ secrets.PREPROD_CLICKPOST_API_KEY }}
+          PREPROD_CLICKPOST_SHIPMENT_API_USERNAME: ${{ secrets.PREPROD_CLICKPOST_SHIPMENT_API_USERNAME }}
+          PREPROD_CLICKPOST_SHIPMENT_API_PASSWORD: ${{ secrets.PREPROD_CLICKPOST_SHIPMENT_API_PASSWORD }}
+          PREPROD_UNIWARE_API_URL: ${{ secrets.PREPROD_UNIWARE_API_URL }}
+          PREPROD_EASYCOM_API_URL: ${{ secrets.PREPROD_EASYCOM_API_URL }}
+          # Prod
+          PROD_BASE_URL: ${{ secrets.PROD_BASE_URL }}
+          PROD_ADMIN_USER: ${{ secrets.PROD_ADMIN_USER }}
+          PROD_ADMIN_PASS: ${{ secrets.PROD_ADMIN_PASS }}
+          PROD_X_API_KEY: ${{ secrets.PROD_X_API_KEY }}
+          PROD_CLICKPOST_API_KEY: ${{ secrets.PROD_CLICKPOST_API_KEY }}
+          PROD_CLICKPOST_SHIPMENT_API_USERNAME: ${{ secrets.PROD_CLICKPOST_SHIPMENT_API_USERNAME }}
+          PROD_CLICKPOST_SHIPMENT_API_PASSWORD: ${{ secrets.PROD_CLICKPOST_SHIPMENT_API_PASSWORD }}
         run: pytest -m "sanity and not mobile" --alluredir=reports/allure-results -v
 
       - name: Upload Allure results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: sanity-allure-results
+          name: sanity-allure-results-${{ github.event.inputs.environment }}
           path: reports/allure-results/
           retention-days: 7

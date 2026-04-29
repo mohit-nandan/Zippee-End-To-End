@@ -7,7 +7,7 @@ on:
 
 jobs:
   regression-api-web:
-    name: Regression — API + Web
+    name: Regression — API + Web (Staging)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,17 +25,19 @@ jobs:
       - name: Run regression tests (API + Web)
         env:
           ENV: staging
-          INTERNAL_API_URL: ${{ secrets.INTERNAL_API_URL }}
-          INTERNAL_API_TOKEN: ${{ secrets.INTERNAL_API_TOKEN }}
-          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
-          DASHBOARD_USER: ${{ secrets.DASHBOARD_USER }}
-          DASHBOARD_PASSWORD: ${{ secrets.DASHBOARD_PASSWORD }}
-          UNIWARE_API_URL: ${{ secrets.UNIWARE_API_URL }}
-          UNIWARE_API_TOKEN: ${{ secrets.UNIWARE_API_TOKEN }}
-          EASYCOM_API_URL: ${{ secrets.EASYCOM_API_URL }}
-          EASYCOM_API_TOKEN: ${{ secrets.EASYCOM_API_TOKEN }}
-          CLICKPOST_API_URL: ${{ secrets.CLICKPOST_API_URL }}
-          CLICKPOST_API_TOKEN: ${{ secrets.CLICKPOST_API_TOKEN }}
+          STAGING_BASE_URL: ${{ secrets.STAGING_BASE_URL }}
+          STAGING_ADMIN_USER: ${{ secrets.STAGING_ADMIN_USER }}
+          STAGING_ADMIN_PASS: ${{ secrets.STAGING_ADMIN_PASS }}
+          STAGING_DB_HOST: ${{ secrets.STAGING_DB_HOST }}
+          STAGING_DB_USER: ${{ secrets.STAGING_DB_USER }}
+          STAGING_DB_PASSWORD: ${{ secrets.STAGING_DB_PASSWORD }}
+          STAGING_DB_NAME: ${{ secrets.STAGING_DB_NAME }}
+          STAGING_DB_PORT: ${{ secrets.STAGING_DB_PORT }}
+          STAGING_CLICKPOST_API_KEY: ${{ secrets.STAGING_CLICKPOST_API_KEY }}
+          STAGING_CLICKPOST_SHIPMENT_API_USERNAME: ${{ secrets.STAGING_CLICKPOST_SHIPMENT_API_USERNAME }}
+          STAGING_CLICKPOST_SHIPMENT_API_PASSWORD: ${{ secrets.STAGING_CLICKPOST_SHIPMENT_API_PASSWORD }}
+          STAGING_UNIWARE_API_URL: ${{ secrets.STAGING_UNIWARE_API_URL }}
+          STAGING_EASYCOM_API_URL: ${{ secrets.STAGING_EASYCOM_API_URL }}
         run: pytest -m "regression and not mobile" --alluredir=reports/allure-results -v
 
       - name: Upload Allure results

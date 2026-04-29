@@ -1,14 +1,54 @@
-# Update these URLs to match your actual environments
 staging:
-  internal_api_url: ${INTERNAL_API_URL}
-  dashboard_url: ${DASHBOARD_URL}
-  uniware_api_url: ${UNIWARE_API_URL}
-  easycom_api_url: ${EASYCOM_API_URL}
-  clickpost_api_url: ${CLICKPOST_API_URL}
+  base_url: ${STAGING_BASE_URL}
+  dashboard_url: ${STAGING_BASE_URL}
+  internal_api_url: ${STAGING_BASE_URL}
+  admin_user: ${STAGING_ADMIN_USER}
+  admin_pass: ${STAGING_ADMIN_PASS}
+  db_host: ${STAGING_DB_HOST}
+  db_user: ${STAGING_DB_USER}
+  db_password: ${STAGING_DB_PASSWORD}
+  db_name: ${STAGING_DB_NAME}
+  db_port: ${STAGING_DB_PORT}
+  clickpost_api_url: https://api.clickpost.in
+  clickpost_api_key: ${STAGING_CLICKPOST_API_KEY}
+  clickpost_shipment_username: ${STAGING_CLICKPOST_SHIPMENT_API_USERNAME}
+  clickpost_shipment_password: ${STAGING_CLICKPOST_SHIPMENT_API_PASSWORD}
+  uniware_api_url: ${STAGING_UNIWARE_API_URL}
+  easycom_api_url: ${STAGING_EASYCOM_API_URL}
+
+preprod:
+  base_url: ${PREPROD_BASE_URL}
+  dashboard_url: ${PREPROD_BASE_URL}
+  internal_api_url: ${PREPROD_BASE_URL}
+  admin_user: ${PREPROD_ADMIN_USER}
+  admin_pass: ${PREPROD_ADMIN_PASS}
+  db_host: ${PREPROD_DB_HOST}
+  db_user: ${PREPROD_DB_USER}
+  db_password: ${PREPROD_DB_PASSWORD}
+  db_name: ${PREPROD_DB_NAME}
+  db_port: ${PREPROD_DB_PORT}
+  clickpost_api_url: https://api.clickpost.in
+  clickpost_api_key: ${PREPROD_CLICKPOST_API_KEY}
+  clickpost_shipment_username: ${PREPROD_CLICKPOST_SHIPMENT_API_USERNAME}
+  clickpost_shipment_password: ${PREPROD_CLICKPOST_SHIPMENT_API_PASSWORD}
+  uniware_api_url: ${PREPROD_UNIWARE_API_URL}
+  easycom_api_url: ${PREPROD_EASYCOM_API_URL}
 
 prod:
-  internal_api_url: ${INTERNAL_API_URL}
-  dashboard_url: ${DASHBOARD_URL}
-  uniware_api_url: ${UNIWARE_API_URL}
-  easycom_api_url: ${EASYCOM_API_URL}
-  clickpost_api_url: ${CLICKPOST_API_URL}
+  base_url: ${PROD_BASE_URL}
+  dashboard_url: ${PROD_BASE_URL}
+  internal_api_url: ${PROD_BASE_URL}
+  admin_user: ${PROD_ADMIN_USER}
+  admin_pass: ${PROD_ADMIN_PASS}
+  db_host: ${PROD_DB_HOST}
+  db_user: ${PROD_DB_USER}
+  db_password: ${PROD_DB_PASSWORD}
+  db_name: ${PROD_DB_NAME}
+  db_port: ${PROD_DB_PORT}
+  x_api_key: ${PROD_X_API_KEY}
+  clickpost_api_url: https://api.clickpost.in
+  clickpost_api_key: ${PROD_CLICKPOST_API_KEY}
+  clickpost_shipment_username: ${PROD_CLICKPOST_SHIPMENT_API_USERNAME}
+  clickpost_shipment_password: ${PROD_CLICKPOST_SHIPMENT_API_PASSWORD}
+  uniware_api_url: ${PROD_UNIWARE_API_URL}
+  easycom_api_url: ${PROD_EASYCOM_API_URL}
