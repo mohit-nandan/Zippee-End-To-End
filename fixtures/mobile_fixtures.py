@@ -61,8 +61,8 @@ def ios_driver(appium_server):
 
 
 def _make_options(caps: dict):
-    from appium.options import AppiumOptions
-    options = AppiumOptions()
+    from appium.options.android.uiautomator2.base import UiAutomator2Options
+    options = UiAutomator2Options()
     for key, value in caps.items():
         options.set_capability(key, value)
     return options

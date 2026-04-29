@@ -15,7 +15,7 @@ from mcp.server.stdio import stdio_server
 from mcp.types import TextContent, ImageContent, Tool
 
 from appium import webdriver as appium_webdriver
-from appium.options import AppiumOptions
+from appium.options.android.uiautomator2.base import UiAutomator2Options
 from utils.config_loader import get_device_caps
 
 APPIUM_URL = os.environ.get("APPIUM_SERVER_URL", "http://localhost:4723")
@@ -28,7 +28,7 @@ def _get_driver():
     global _driver
     if _driver is None:
         caps = get_device_caps("android")
-        options = AppiumOptions()
+        options = UiAutomator2Options()
         for k, v in caps.items():
             options.set_capability(k, v)
         _driver = appium_webdriver.Remote(APPIUM_URL, options=options)
