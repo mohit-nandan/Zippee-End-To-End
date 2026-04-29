@@ -1,0 +1,47 @@
+name: Smoke Tests — Daily
+
+on:
+  schedule:
+    - cron: "30 2 * * *"   # 8:00 AM IST (UTC+5:30)
+  workflow_dispatch: {}
+
+jobs:
+  smoke-api-web:
+    name: Smoke — API + Web
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+
+      - name: Run smoke tests (API + Web)
+        env:
+          ENV: staging
+          INTERNAL_API_URL: ${{ secrets.INTERNAL_API_URL }}
+          INTERNAL_API_TOKEN: ${{ secrets.INTERNAL_API_TOKEN }}
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+          DASHBOARD_USER: ${{ secrets.DASHBOARD_USER }}
+          DASHBOARD_PASSWORD: ${{ secrets.DASHBOARD_PASSWORD }}
+          UNIWARE_API_URL: ${{ secrets.UNIWARE_API_URL }}
+          UNIWARE_API_TOKEN: ${{ secrets.UNIWARE_API_TOKEN }}
+          EASYCOM_API_URL: ${{ secrets.EASYCOM_API_URL }}
+          EASYCOM_API_TOKEN: ${{ secrets.EASYCOM_API_TOKEN }}
+          CLICKPOST_API_URL: ${{ secrets.CLICKPOST_API_URL }}
+          CLICKPOST_API_TOKEN: ${{ secrets.CLICKPOST_API_TOKEN }}
+        run: pytest -m "smoke and not mobile" --alluredir=reports/allure-results -v
+
+      - name: Upload Allure results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-allure-results
+          path: reports/allure-results/
+          retention-days: 7
