@@ -1,7 +1,11 @@
+import subprocess
 from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+
+# Android keycode for each digit 0-9
+_DIGIT_KEYCODE = {str(i): 7 + i for i in range(10)}
 
 
 class BaseScreen:
@@ -39,6 +43,17 @@ class BaseScreen:
             return True
         except TimeoutException:
             return False
+
+    def type_via_keyevent(self, text: str):
+        """Type digits using adb key events — required for ViewGroup-based OTP boxes."""
+        udid = self.driver.capabilities.get("udid", "emulator-5554")
+        for char in str(text):
+            code = _DIGIT_KEYCODE.get(char)
+            if code is not None:
+                subprocess.run(
+                    ["adb", "-s", udid, "shell", "input", "keyevent", str(code)],
+                    check=True,
+                )
 
     def swipe_up(self):
         size = self.driver.get_window_size()

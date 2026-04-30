@@ -9,7 +9,7 @@ staging:
   db_password: ${STAGING_DB_PASSWORD}
   db_name: ${STAGING_DB_NAME}
   db_port: ${STAGING_DB_PORT}
-  clickpost_api_url: https://api.clickpost.in
+  clickpost_api_url: https://www.clickpost.in
   clickpost_api_key: ${STAGING_CLICKPOST_API_KEY}
   clickpost_shipment_username: ${STAGING_CLICKPOST_SHIPMENT_API_USERNAME}
   clickpost_shipment_password: ${STAGING_CLICKPOST_SHIPMENT_API_PASSWORD}
@@ -27,7 +27,7 @@ preprod:
   db_password: ${PREPROD_DB_PASSWORD}
   db_name: ${PREPROD_DB_NAME}
   db_port: ${PREPROD_DB_PORT}
-  clickpost_api_url: https://api.clickpost.in
+  clickpost_api_url: https://www.clickpost.in
   clickpost_api_key: ${PREPROD_CLICKPOST_API_KEY}
   clickpost_shipment_username: ${PREPROD_CLICKPOST_SHIPMENT_API_USERNAME}
   clickpost_shipment_password: ${PREPROD_CLICKPOST_SHIPMENT_API_PASSWORD}
@@ -46,7 +46,7 @@ prod:
   db_name: ${PROD_DB_NAME}
   db_port: ${PROD_DB_PORT}
   x_api_key: ${PROD_X_API_KEY}
-  clickpost_api_url: https://api.clickpost.in
+  clickpost_api_url: https://www.clickpost.in
   clickpost_api_key: ${PROD_CLICKPOST_API_KEY}
   clickpost_shipment_username: ${PROD_CLICKPOST_SHIPMENT_API_USERNAME}
   clickpost_shipment_password: ${PROD_CLICKPOST_SHIPMENT_API_PASSWORD}

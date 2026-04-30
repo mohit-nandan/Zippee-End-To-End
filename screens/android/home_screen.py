@@ -3,19 +3,35 @@ from screens.base_screen import BaseScreen
 
 
 class AndroidHomeScreen(BaseScreen):
-    ORDER_LIST_TAB   = (AppiumBy.ID, "com.zippee.rider:id/tab_orders")
-    FIRST_ORDER_ITEM = (AppiumBy.XPATH, "//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]")
-    ATTENDANCE_BTN   = (AppiumBy.ID, "com.zippee.rider:id/mark_attendance_btn")
-    WELCOME_TEXT     = (AppiumBy.ID, "com.zippee.rider:id/welcome_text")
+    # Bottom navigation tabs
+    TAB_HOME        = (AppiumBy.XPATH, '//android.view.View[@content-desc="Home"]')
+    TAB_DELIVERY    = (AppiumBy.XPATH, '//android.view.View[@content-desc="Delivery"]')
+    TAB_ATTENDANCE  = (AppiumBy.XPATH, '//android.view.View[@content-desc="Attendance"]')
+    TAB_SETTLEMENTS = (AppiumBy.XPATH, '//android.view.View[@content-desc="Settlements"]')
 
-    def is_loaded(self) -> bool:
-        return self.is_visible(self.WELCOME_TEXT)
+    # Top bar
+    HAMBURGER_BTN   = (AppiumBy.XPATH, '(//android.view.ViewGroup[.//android.widget.ImageView])[1]')
+    NOTIFICATIONS   = (AppiumBy.XPATH, '//android.view.ViewGroup[@content-desc="Notifications"]')
 
-    def go_to_orders(self):
-        self.tap(self.ORDER_LIST_TAB)
+    # Home content — used as "home is loaded" sentinel
+    _HOME_CONTAINER = TAB_HOME
 
-    def tap_first_order(self):
-        self.tap(self.FIRST_ORDER_ITEM)
+    # ------------------------------------------------------------------ #
 
-    def mark_attendance(self):
-        self.tap(self.ATTENDANCE_BTN)
+    def is_loaded(self, timeout: int = 15) -> bool:
+        return self.is_visible(self.TAB_HOME, timeout=timeout)
+
+    def open_drawer(self):
+        self.tap(self.HAMBURGER_BTN)
+
+    def go_to_delivery(self):
+        self.tap(self.TAB_DELIVERY)
+
+    def go_to_attendance(self):
+        self.tap(self.TAB_ATTENDANCE)
+
+    def go_to_settlements(self):
+        self.tap(self.TAB_SETTLEMENTS)
+
+    def go_to_home(self):
+        self.tap(self.TAB_HOME)

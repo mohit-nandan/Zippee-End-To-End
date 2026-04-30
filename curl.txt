@@ -1,0 +1,451 @@
+curl --location 'https://preprod.zorms.zfwhospitality.in/api/1/mainsite/token' \
+--header 'X-API-KEY: clickpost_preprod_aEmgZn14UozwomtDfQR2Wx1s4LJpOTt9I6XfyfKY34siKs6S7aEWbYVCzRKD4UtX' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username" : "fabbox@zfwhospitality.com",
+    "password" : "QWERTY!@#$%"
+}'
+
+
+curl --location 'https://preprod.zorms.zfwhospitality.in/api/1/mainsite/shipment/create' \
+--header 'x-api-key: clickpost_preprod_aEmgZn14UozwomtDfQR2Wx1s4LJpOTt9I6XfyfKY34siKs6S7aEWbYVCzRKD4UtX' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJicmFuZF9kaXNwbGF5X25hbWUiOiJ0ZXN0aW5nX2ZhYmJveCIsImJyYW5kX2lkIjoxMzYsImVzX2lkIjo2LCJlc19uYW1lIjoiQ2xpY2twb3N0IiwiYnJhbmRfcHJlZml4IjoiRkJYIiwiZXhwIjoxNzc3Mzg1MzE3fQ.2nBOL5TvQjYsjPiOhc2z0NciozhTvkRiDviNwGQiFuE' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "reference_code": "REF_TEST_258923703434234130",
+    "original_reference_code": "REF_TEST_2025170901140",
+    "order_date": "2026-04-13 17:30:00",
+    "reverse_pickup": false,
+    "shipment_type": "FORWARD",
+    "multi_select": false,
+    "is_tnb": false,
+    
+    
+    
+    
+
+    "meta": {
+      "tags": [
+        "PREPAID"
+      ]
+    },
+
+    "delivery_details": {
+      "name": "Priya Verma",
+      "contact_num": "9123456780",
+      "address_line_1": "Hastings Ave, Azad Nagar, Nawabganj, Kanpur, Uttar Pradesh 208002",
+      "address_line_2": "Kanpur",
+      "city": "Kanpur",
+      "state": "Uttar Pradesh",
+      "country": "India",
+      "latitude": 26.4843968,
+      "longitude": 80.269205,
+      "email": "priya.verma@gmail.com",
+        "pin_code": "122008"
+    },
+    "return_details": {
+        "name": "Darsktore captain Diljeet",
+        "contact_num": "9532385430",
+        "address_line_1": "okhla ",
+        "address_line_2": "Delhi",
+        "city": "Delhi",
+        "state": "Delhi",
+        "country": "India",
+        "latitude": 28.4940959,
+        "longitude": 77.0927495,
+        "email": "mohitnandan81825@gmail.com",
+        "pin_code": "110002"
+    },
+    "pickup_details": {
+        "name": "Mohit Nandan",
+        "contact_num": "9140151251",
+        "address_line_1": "Taj Mahal, Eastern Gate, Forest Colony, Tajganj, Agra, Uttar Pradesh 282001",
+        "address_line_2": "Agra",
+        "city": "Agra",
+        "state": "Uttar Pradesh",
+        "country": "India",
+        "latitude": 27.171088,
+        "longitude": 78.0409694,
+        "email": "mohitnandan81825@gmail.com",
+        "pin_code": "560034"
+    },
+    "cod_details": {
+        "is_cod": false,
+        "collectable_amount": 100,
+        "total_value": 200,
+        "dynamic_adjustment_required": false,
+        "miscellaneous_charges": {
+            "handling_fee": 10,
+            "packing_cost": 10,
+            "priority_fee": 10
+        }
+    },
+    "package_weight": 700,
+    "package_length": 40,
+    "package_width": 28,
+    "package_height": 20,
+
+    "order_items": [
+        {
+            "item_quantity": 2,
+            "selling_price": 100,
+            "sku": "SKU_TEST_2026_001",
+            "product_name": "Herbal Green Tea Pack Herbal Green Tea Pack",
+            "description": "Refreshing herbal green tea blend Refreshing herbal green tea blend",
+            "mrp": 199,
+            "ean": "EAN2026000001",
+            "category": "Beverages",
+            "is_returnable": false,
+            "image": "https://images.pexels.com/photos/25811351/pexels-photo-25811351.jpeg?cs=srgb&dl=pexels-kichu98-25811351.jpg&fm=jpg",
+            "meta": {
+                "flavor": "herbal",
+                "weight": "150g",
+                "origin": "India",
+                "packaging": "paper box"
+            }
+        },
+        {
+            "item_quantity": 1,
+            "selling_price": 200,
+            "sku": "SKU_TEST_2026_002",
+            "product_name": "Black Coffee Premium Black Coffee Premium",
+            "description": "Strong roasted black coffee beans Strong roasted black coffee beans",
+            "mrp": 349,
+            "ean": "EAN2026000002",
+            "category": "Beverages",
+            "is_returnable": false,
+            "image": "https://images.pexels.com/photos/25811351/pexels-photo-25811351.jpeg?cs=srgb&dl=pexels-kichu98-25811351.jpg&fm=jpg",
+            "meta": {
+                "flavor": "dark_roast",
+                "weight": "500g",
+                "origin": "Colombia",
+                "packaging": "sealed bag"
+            }
+        },
+        {
+            "item_quantity": 1,
+            "selling_price": 200,
+            "sku": "SKU_TEST_2026_002",
+            "product_name": "Black Coffee Premium Black Coffee Premium",
+            "description": "Strong roasted black coffee beans Strong roasted black coffee beans",
+            "mrp": 349,
+            "ean": "EAN2026000002",
+            "category": "Beverages",
+            "is_returnable": false,
+            "image": "https://images.pexels.com/photos/25811351/pexels-photo-25811351.jpeg?cs=srgb&dl=pexels-kichu98-25811351.jpg&fm=jpg",
+            "meta": {
+                "flavor": "dark_roast",
+                "weight": "500g",
+                "origin": "Colombia",
+                "packaging": "sealed bag"
+            }
+        }
+    ]
+}'
+
+curl --location 'https://preprod.zorms.zfwhospitality.in/api/1/unicommerce/authToken' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+   "username": "fabbox@zfwhospitality.com",
+    "password": "QWERTY!@#$%"
+}'
+
+curl --location 'https://preprod.zorms.zfwhospitality.in/api/1/unicommerce/waybill' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNTgsImJyYW5kX2Rpc3BsYXlfbmFtZSI6InRlc3RpbmdfZmFiYm94IiwiYnJhbmRfaWQiOjEzNiwiYnJhbmRfcHJlZml4IjoiRkJYIiwiZXhwIjoxNzc3Mzg1NTI3fQ.f-p4abunH09y71Yqx7pmYuFXXnrXfMiL62_M-MOpnao' \
+--data '{
+  "serviceType": "",
+  "handOverMode": "",
+  "returnShipmentFlag": "false",
+  "Shipment": {
+    "shipmentTag": "",
+    "code": "PMD1S2627/00722",
+    "customField": [],
+    "SaleOrderCode": "21229607",
+    "orderCode": "21229699705102",
+    "channelCode": "CUSTOM",
+    "channelName": "Regular_Orders",
+    "invoiceCode": "SIMHD1S2627/0738",
+    "orderDate": "24-Apr-2026 14:52:59",
+    "fullFilllmentTat": "29-Apr-2026 14:52:59",
+    "weight": "1001.000",
+    "length": "1",
+    "height": "1",
+    "breadth": "1",
+    "source": "unicommerce",
+    "numberOfBoxes": "1",
+    "items": [
+      {
+        "name": "Pr****",
+        "description": "Pro 26G - Unflavoured Concentrate - 1kg (WCU1000)",
+        "quantity": 1,
+        "skuCode": "F2610014",
+        "itemPrice": 2675.00,
+        "brand": "",
+        "color": "",
+        "category": "26",
+        "size": "",
+        "item_details": "",
+        "ean": "8906143891661",
+        "imageURL": "",
+        "hsnCode": "21061000",
+        "tags": ""
+      },
+      {
+        "name": "Ne****",
+        "description": "Next Gen Information Card",
+        "quantity": 1,
+        "skuCode": "F2710009",
+        "itemPrice": 0.00,
+        "brand": "",
+        "color": "",
+        "category": "27",
+        "size": "",
+        "item_details": "",
+        "ean": "",
+        "imageURL": "",
+        "hsnCode": "48201020",
+        "tags": ""
+      }
+    ]
+  },
+  "deliveryAddressId": "",
+  "deliveryAddressDetails": {
+    "name": "ni****",
+    "email": "",
+    "phone": "91****",
+    "address1": "C - 502 Prem Vishnu Apparents\nChafekar Bandhu Marg \nNear Khandoba Temple\nNext to Dhingra Park\nMulund East",
+    "address2": "",
+    "district": "",
+    "pincode": "122008",
+    "city": "MUMBAI",
+    "state": "Maharashtra",
+    "country": "India",
+    "stateCode": "MH",
+    "countryCode": "IN",
+    "gstin": "",
+    "alternatePhone": ""
+  },
+  "pickupAddressId": "",
+  "pickupAddressDetails": {
+    "name": "MU****",
+    "email": "",
+    "phone": "91****",
+    "address1": "The Whole Truth, Unit No G2, Bhagson House, 117, Marol Co Op Industrial Estate, Off Mathuradas Vassanji Road",
+    "address2": "Andheri Kurla Road, Andheri East",
+    "pincode": "400059",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "country": "India",
+    "stateCode": "MH",
+    "countryCode": "IN",
+    "gstin": "27AADCF7463N1Z2",
+    "latitude": "",
+    "longitude": ""
+  },
+  "returnAddressId": "",
+  "returnAddressDetails": {
+    "pincode": "400059",
+    "country": "India",
+    "address2": "Andheri Kurla Road, Andheri East",
+    "city": "Mumbai",
+    "address1": "The Whole Truth, Unit No G2, Bhagson House, 117, Marol Co Op Industrial Estate, Off Mathuradas Vassanji Road",
+    "latitude": "",
+    "gstin": "27AADCF7463N1Z2",
+    "phone": "91****",
+    "countryCode": "IN",
+    "name": "MU****",
+    "stateCode": "MH",
+    "state": "Maharashtra",
+    "email": "",
+    "longitude": ""
+  },
+  "currencyCode": "INR",
+  "paymentMode": "COD",
+  "totalAmount": "2675.00",
+  "collectableAmount": "1000",
+  "courierName": ""
+}'
+
+
+
+curl --location 'https://preprod.zorms.zfwhospitality.in/api/1/easyecom/authenticate' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+   "username": "fabbox@zfwhospitality.com",
+    "password": "QWERTY!@#$%",
+    "token": "wo3876556644",
+    "account_no": "",
+    "service_type": "",
+    "eeApiToken": "fabbox@zfwhospitality.com, QWERTY!@#$%, wo3876556644",
+    "attempts_offered": "3"
+}'
+
+curl --location 'https://preprod.zorms.zfwhospitality.in/api/1/easyecom/createShipment' \
+--header 'Cache-Control: private,must-revalidate' \
+--header 'Connection: keep-alive' \
+--header 'Content-Encoding: gzip' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "order_data": {
+        "invoice_id": "REF_TEST_2589237034342349103",
+        "order_id": 97256311,
+        "blockSplit": 0,
+        "reference_code": "cc12-7",
+        "company_name": "EasyEcom Test Company",
+        "warehouse_id": 59032,
+        "seller_gst": "",
+        "assigned_company_name": "EasyEcom Test Company",
+        "assigned_warehouse_id": 59032,
+        "assigned_company_gst": "",
+        "warehouse_contact": "",
+        "pickup_address": "Pathardi phata ",
+        "pickup_city": "Nashik",
+        "pickup_state": "Maharashtra",
+        "pickup_state_code": "27",
+        "pickup_pin_code": "560001",
+        "pickup_country": "India",
+        "invoice_currency_code": "INR",
+        "order_type": "B2C",
+        "order_type_key": "retailorder",
+        "replacement_order": 0,
+        "marketplace": "Offline",
+        "MarketCId": 123,
+        "marketplace_id": 10,
+        "market_shipped": 0,
+        "merchant_c_id": 123,
+        "qcPassed": 1,
+        "salesmanUserId": 0,
+        "order_date": "2023-01-12 05:30:00",
+        "tat": "2023-01-13 17:30:17",
+        "available_after": null,
+        "invoice_date": "",
+        "import_date": "2023-01-12 17:30:17",
+        "last_update_date": "2023-01-12 17:30:18",
+        "manifest_date": null,
+        "manifest_no": null,
+        "invoice_number": null,
+        "marketplace_invoice_num": "ccc-1",
+        "shipping_last_update_date": null,
+        "batch_id": 1022237,
+        "batch_created_at": "2023-01-12 17:27:45",
+        "message": null,
+        "courier_aggregator_name": null,
+        "courier": "Zippee Outbound",
+        "carrier_id": 61546,
+        "awb_number": null,
+        "Package Weight": 200,
+        "Package Height": 3,
+        "Package Length": 3,
+        "Package Width": 3,
+        "order_status": "Open",
+        "order_status_id": 2,
+        "easyecom_order_history": null,
+        "shipping_status": null,
+        "shipping_status_id": null,
+        "tracking_url": null,
+        "shipping_history": null,
+        "payment_mode": "Online",
+        "payment_mode_id": 2,
+        "payment_gateway_transaction_number": null,
+        "buyer_gst": "NA",
+        "customer_name": "sdfgh",
+        "shipping_name": "sdfgh",
+        "contact_num": "9876543210",
+        "address_line_1": "hssr layout",
+        "address_line_2": null,
+        "city": "bangalore",
+        "pin_code": "122008",
+        "state": "Tamil Nadu",
+        "state_code": "33",
+        "country": "India",
+        "country_code": 0,
+        "email": "sdfgbh@gmail.com",
+        "latitude": null,
+        "longitude": null,
+        "billing_name": "sdfgh",
+        "billing_address_1": "hssr layout",
+        "billing_address_2": null,
+        "billing_city": "bangalore",
+        "billing_state": "Karnataka",
+        "billing_state_code": "29",
+        "billing_pin_code": "560001",
+        "billing_country": "India",
+        "billing_mobile": "9876543210",
+        "order_quantity": 2,
+        "documents": null,
+        "invoice_documents": null,
+        "collectable_amount": 100,
+        "total_amount": 200,
+        "total_tax": 3.0508,
+        "breakup_types": {
+            "Item Amount Excluding Tax": 16.9492,
+            "Item Amount IGST": 3.0508
+        },
+        "tcs_rate": 0,
+        "tcs_amount": 0,
+        "customer_code": "NA",
+        "order_items": [
+            {
+                "suborder_id": 146601869,
+                "suborder_num": "59032167352481783352367",
+                "invoicecode": null,
+                "item_collectable_amount": 0,
+                "shipment_type": "Zippee Outbound",
+                "suborder_quantity": 1,
+                "item_quantity": 1,
+                "returned_quantity": 0,
+                "cancelled_quantity": 0,
+                "shipped_quantity": 1,
+                "tax_type": "GST",
+                "product_id": 19452180,
+                "company_product_id": 76120647,
+                "sku": "CCSKU23",
+                "expiry_type": 0,
+                "sku_type": "Normal",
+                "sub_product_count": 1,
+                "marketplace_sku": "CCSKU23",
+                "listing_ref_number": "-",
+                "listing_id": "-",
+                "productName": "CCount",
+                "description": null,
+                "category": "CC5",
+                "brand": "CCC",
+                "brand_id": 7147017,
+                "model_no": "6513",
+                "product_tax_code": null,
+                "ean": "5",
+                "size": "NA",
+                "cost": 150,
+                "mrp": 200,
+                "weight": 200,
+                "length": 3,
+                "width": 3,
+                "height": 3,
+                "scheme_applied": 0,
+                "custom_fields": [],
+                "serials": [
+                    null
+                ],
+                "tax_rate": 18,
+                "selling_price": "20",
+                "breakup_types": {
+                    "Item Amount Excluding Tax": 16.9492,
+                    "Item Amount IGST": 3.0508
+                },
+                "station_scanned_quantity": 0,
+                "batch_scanned_quantity": 0,
+                "assigned_quantity": 1
+            }
+        ]
+    },
+    "credentials": {
+        "username": "fabbox@zfwhospitality.com",
+        "password": "QWERTY!@#$%",
+        "token": "wo3876556644",
+        "account_no": "",
+        "service_type": "",
+        "eeApiToken": "fabbox@zfwhospitality.com, QWERTY!@#$%, wo3876556644",
+        "attempts_offered": "3"
+    }
+}'

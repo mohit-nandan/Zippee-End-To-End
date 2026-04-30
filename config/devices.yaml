@@ -6,7 +6,7 @@ android:
   avd: Pixel_8
   avdLaunchTimeout: 60000
   avdReadyTimeout: 60000
-  app: ./builds/zippee-rider-staging.apk
+  app: C:/Users/User/Desktop/Zippee_End_to_End/zippee-automation/builds/zippee-rider-staging.apk
   appPackage: com.zippee.ridercod
   appActivity: com.zippee.ridercod.MainActivity
   autoGrantPermissions: true
