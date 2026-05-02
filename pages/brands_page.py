@@ -21,7 +21,11 @@ class BrandsPage(BasePage):
     }
 
     def is_loaded(self) -> bool:
-        return self.is_visible(self.HEADING)
+        try:
+            self.expect_visible(self.HEADING, timeout=15000)
+            return True
+        except Exception:
+            return False
 
     def search_column(self, col: str, value: str):
         self.page.locator(self.COL_SEARCH[col]).fill(value)

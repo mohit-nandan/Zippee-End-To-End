@@ -21,8 +21,11 @@ class SettlementPage(BasePage):
     }
 
     def is_loaded(self) -> bool:
-        self.wait_for_spinner_gone()
-        return self.is_visible(self.TAB_RIDER)
+        try:
+            self.expect_visible(self.TAB_RIDER, timeout=15000)
+            return True
+        except Exception:
+            return False
 
     def click_tab(self, tab: str):
         self.page.locator(self.TABS[tab]).first.click()

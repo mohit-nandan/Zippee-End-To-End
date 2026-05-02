@@ -24,8 +24,11 @@ class DeliveriesPage(BasePage):
     TABLE_ROWS       = "tbody tr"
 
     def is_loaded(self) -> bool:
-        self.wait_for_spinner_gone()
-        return self.is_visible(self.TAB_SHIPMENTS)
+        try:
+            self.expect_visible(self.TAB_SHIPMENTS, timeout=15000)
+            return True
+        except Exception:
+            return False
 
     def click_tab(self, tab_name: str):
         tabs = {

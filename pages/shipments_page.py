@@ -29,7 +29,11 @@ class ShipmentsPage(BasePage):
     }
 
     def is_loaded(self) -> bool:
-        return self.is_visible(self.STAT_TOTAL)
+        try:
+            self.expect_visible(self.STAT_TOTAL, timeout=15000)
+            return True
+        except Exception:
+            return False
 
     def get_total_count(self) -> int:
         try:

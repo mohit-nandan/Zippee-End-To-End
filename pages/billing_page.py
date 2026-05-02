@@ -23,8 +23,11 @@ class BillingPage(BasePage):
     TABLE_ROWS          = "tbody tr"
 
     def is_loaded(self) -> bool:
-        self.wait_for_spinner_gone()
-        return self.is_visible(self.HEADING)
+        try:
+            self.expect_visible(self.HEADING, timeout=15000)
+            return True
+        except Exception:
+            return False
 
     def click_tab(self, tab: str):
         tabs = {"deductions": self.TAB_DEDUCTIONS, "invoices": self.TAB_INVOICES}

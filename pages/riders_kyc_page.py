@@ -15,8 +15,11 @@ class RidersKycPage(BasePage):
     STATUS_PENDING    = ":text('Pending')"
 
     def is_loaded(self) -> bool:
-        self.wait_for_spinner_gone()
-        return self.is_visible(self.HEADING)
+        try:
+            self.expect_visible(self.HEADING, timeout=15000)
+            return True
+        except Exception:
+            return False
 
     def search_rider(self, name: str):
         self.page.locator(self.RIDER_SEARCH).fill(name)

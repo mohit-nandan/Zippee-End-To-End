@@ -34,7 +34,7 @@ def playwright_instance():
 @pytest.fixture(scope="session")
 def browser_instance(playwright_instance):
     browser = playwright_instance.chromium.launch(
-        headless=True,
+        headless=False,
         args=["--no-sandbox", "--disable-dev-shm-usage"],
     )
     yield browser

@@ -10,7 +10,11 @@ class HomePage(BasePage):
     COVERAGE_MAP    = ":text('Zippee Coverage')"
 
     def is_loaded(self) -> bool:
-        return self.is_visible(self.NEW_ORDERS_CARD)
+        try:
+            self.expect_visible(self.NEW_ORDERS_CARD, timeout=15000)
+            return True
+        except Exception:
+            return False
 
     def get_new_orders_count(self) -> str:
         card = self.page.locator(self.NEW_ORDERS_CARD).locator("..").locator("..")

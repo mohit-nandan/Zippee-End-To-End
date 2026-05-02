@@ -32,7 +32,8 @@ def authenticated_dashboard(page, web_cfg):
     """Logs in and yields a fully authenticated Playwright page."""
     base = web_cfg["dashboard_url"].rstrip("/")
     page.goto(f"{base}/sign-in")
-    page.wait_for_load_state("networkidle")
+    page.wait_for_load_state("domcontentloaded")
+    page.locator("#email").wait_for(state="visible", timeout=15000)
 
     # Step 1 — enter email and continue
     page.locator("#email").fill(web_cfg["admin_user"])
@@ -42,7 +43,6 @@ def authenticated_dashboard(page, web_cfg):
     # Step 2 — enter password and login
     page.locator("input[type='password']").fill(web_cfg["admin_pass"])
     page.get_by_role("button", name="Login", exact=True).click()
-    page.wait_for_load_state("networkidle")
     page.wait_for_url(f"{base}/", timeout=15000)
 
     yield page

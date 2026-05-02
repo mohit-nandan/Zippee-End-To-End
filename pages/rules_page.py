@@ -13,8 +13,11 @@ class RulesPage(BasePage):
     SORT_NAME     = "th:has-text('Name')"
 
     def is_loaded(self) -> bool:
-        self.wait_for_spinner_gone()
-        return self.is_visible(self.HEADING)
+        try:
+            self.expect_visible(self.HEADING, timeout=15000)
+            return True
+        except Exception:
+            return False
 
     def search_name(self, value: str):
         self.page.locator(self.NAME_SEARCH).fill(value)
