@@ -35,11 +35,7 @@ ENVS = {
         "password":   "QWERTY!@#$%",
         "cp_password": "QWERTY!@#$%",
         "cp_api_key": "clickpost_stg_hzkXpJCz9ET19KTlX2aK34VRbG537yhBsRrb951ZPtdy0HkZpM2wx6D",
-        # Staging server has an async bug on INSERT path — only the UPDATE path works.
-        # These are fixed reference codes that already exist in the staging DB (same as Postman uses).
-        "stg_cp_ref":  "REF_TEST_258923703434234130",
-        "stg_uw_code": "21229699705102",
-        "stg_ec_inv":  "REF_TEST_2589237034342349103",
+        # Fixed ref workaround removed — INSERT path now works after backend fix.
     },
     "preprod": {
         "wms_url":    "https://preprod.zorms.zfwhospitality.in",
@@ -159,12 +155,6 @@ def prompt_config() -> dict:
 
     env = _ask_choice("Environment?", ["stg", "preprod", "prod"], default="preprod")
 
-    if env == "stg":
-        print()
-        print("  NOTE: Staging uses fixed reference codes (same as Postman).")
-        print("  New unique AWBs cannot be created on staging due to a server bug.")
-        print("  You will get back the existing AWBs for those references.")
-        print()
 
     if env == "prod":
         print()

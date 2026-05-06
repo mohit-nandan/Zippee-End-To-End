@@ -4,15 +4,22 @@ Provides an authenticated browser page + a pre-wired ApiInterceptor.
 """
 import pytest
 from utils.web_api_interceptor import ApiInterceptor
+from utils.helpers import get_screen_size
+
+
+@pytest.fixture(scope="session")
+def network_screen_size() -> dict:
+    w, h = get_screen_size()
+    return {"width": w, "height": h}
 
 
 @pytest.fixture
-def network_page(browser_instance, web_cfg):
+def network_page(browser_instance, web_cfg, network_screen_size):
     """
     Authenticated Playwright page for network tests.
     Logs in once per test, yields the ready page.
     """
-    context = browser_instance.new_context(viewport={"width": 1440, "height": 900})
+    context = browser_instance.new_context(viewport=network_screen_size)
     pg = context.new_page()
     base = web_cfg["dashboard_url"].rstrip("/")
 

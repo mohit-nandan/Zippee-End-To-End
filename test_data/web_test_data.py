@@ -6,6 +6,7 @@ Keeps test logic clean — tests import constants from here, never hardcode valu
 # ── Known preprod fixtures ────────────────────────────────────────────────────
 
 KNOWN_BRAND      = "testing_fabbox"
+KNOWN_BRAND_ID   = 136          # preprod brand ID for testing_fabbox
 KNOWN_DARKSTORE  = "express_warehouse"
 KNOWN_RIDER_NAME = "Test"          # partial match, exists in KYC table
 KNOWN_CITY       = "Delhi"
@@ -68,4 +69,16 @@ API = {
     "analytics":   "/analytics",
     "rules":       "/rules",
     "auth":        "/token",
+}
+
+# ── Brand-detail tab API fragments (brand_id=136 in preprod) ─────────────────
+# Each value is a URL substring used with expect_response() interception.
+BRAND_DETAIL_APIS = {
+    "commercials": f"/brands/{KNOWN_BRAND_ID}/commercials/",
+    "gst_details": f"/brands/{KNOWN_BRAND_ID}/gst-details/",
+    "warehouses":  f"/brands/{KNOWN_BRAND_ID}/warehouses/",
+    "webhooks":    f"/brands/{KNOWN_BRAND_ID}/webhooks/",
+    "rules":       f"/brands/{KNOWN_BRAND_ID}/rules/",
+    "comms":       f"/brands/{KNOWN_BRAND_ID}/shipment-comms/",
+    "config":      f"/brand-configurations/",
 }

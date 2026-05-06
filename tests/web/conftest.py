@@ -15,9 +15,16 @@ import pytest
 import allure
 from playwright.sync_api import sync_playwright, BrowserContext
 from utils.config_loader import get_config
+from utils.helpers import get_screen_size
 
 
 # ── Session-level fixtures ────────────────────────────────────────────────────
+
+@pytest.fixture(scope="session")
+def screen_size() -> dict:
+    w, h = get_screen_size()
+    return {"width": w, "height": h}
+
 
 @pytest.fixture(scope="session")
 def web_cfg():
@@ -32,10 +39,14 @@ def playwright_instance():
 
 
 @pytest.fixture(scope="session")
-def browser_instance(playwright_instance):
+def browser_instance(playwright_instance, screen_size):
     browser = playwright_instance.chromium.launch(
         headless=False,
-        args=["--no-sandbox", "--disable-dev-shm-usage"],
+        args=[
+            "--no-sandbox",
+            "--disable-dev-shm-usage",
+            f"--window-size={screen_size['width']},{screen_size['height']}",
+        ],
     )
     yield browser
     browser.close()
@@ -47,20 +58,19 @@ def auth_storage_path(tmp_path_factory):
 
 
 @pytest.fixture(scope="session")
-def authenticated_session(browser_instance, web_cfg, auth_storage_path):
+def authenticated_session(browser_instance, web_cfg, auth_storage_path, screen_size):
     """
     Logs in ONCE for the entire test session and saves browser storage state.
     All subsequent tests restore from this state — no repeated logins.
     """
-    context: BrowserContext = browser_instance.new_context(
-        viewport={"width": 1440, "height": 900}
-    )
+    context: BrowserContext = browser_instance.new_context(viewport=screen_size)
     page = context.new_page()
     base = web_cfg["dashboard_url"].rstrip("/")
 
     with allure.step("Session login"):
         page.goto(f"{base}/sign-in")
-        page.wait_for_load_state("networkidle")
+        page.wait_for_load_state("domcontentloaded")
+        page.locator("#email").wait_for(state="visible", timeout=15000)
         page.locator("#email").fill(web_cfg["admin_user"])
         page.get_by_role("button", name="Continue with Email").click()
         page.locator("input[type='password']").wait_for(state="visible", timeout=8000)
@@ -76,22 +86,22 @@ def authenticated_session(browser_instance, web_cfg, auth_storage_path):
 # ── Function-level fixtures ───────────────────────────────────────────────────
 
 @pytest.fixture
-def page(browser_instance):
+def page(browser_instance, screen_size):
     """Unauthenticated page — used for login tests and negative scenarios."""
-    context = browser_instance.new_context(viewport={"width": 1440, "height": 900})
+    context = browser_instance.new_context(viewport=screen_size)
     pg = context.new_page()
     yield pg
     context.close()
 
 
 @pytest.fixture
-def authenticated_dashboard(browser_instance, authenticated_session):
+def authenticated_dashboard(browser_instance, authenticated_session, screen_size):
     """
     Authenticated page — restores session state so no login needed.
     Fresh page context per test to ensure test isolation.
     """
     context = browser_instance.new_context(
-        viewport={"width": 1440, "height": 900},
+        viewport=screen_size,
         storage_state=authenticated_session,
     )
     pg = context.new_page()

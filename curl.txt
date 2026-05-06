@@ -1,451 +1,1358 @@
-curl --location 'https://preprod.zorms.zfwhospitality.in/api/1/mainsite/token' \
---header 'X-API-KEY: clickpost_preprod_aEmgZn14UozwomtDfQR2Wx1s4LJpOTt9I6XfyfKY34siKs6S7aEWbYVCzRKD4UtX' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "username" : "fabbox@zfwhospitality.com",
-    "password" : "QWERTY!@#$%"
-}'
-
-
-curl --location 'https://preprod.zorms.zfwhospitality.in/api/1/mainsite/shipment/create' \
---header 'x-api-key: clickpost_preprod_aEmgZn14UozwomtDfQR2Wx1s4LJpOTt9I6XfyfKY34siKs6S7aEWbYVCzRKD4UtX' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJicmFuZF9kaXNwbGF5X25hbWUiOiJ0ZXN0aW5nX2ZhYmJveCIsImJyYW5kX2lkIjoxMzYsImVzX2lkIjo2LCJlc19uYW1lIjoiQ2xpY2twb3N0IiwiYnJhbmRfcHJlZml4IjoiRkJYIiwiZXhwIjoxNzc3Mzg1MzE3fQ.2nBOL5TvQjYsjPiOhc2z0NciozhTvkRiDviNwGQiFuE' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "reference_code": "REF_TEST_258923703434234130",
-    "original_reference_code": "REF_TEST_2025170901140",
-    "order_date": "2026-04-13 17:30:00",
-    "reverse_pickup": false,
-    "shipment_type": "FORWARD",
-    "multi_select": false,
-    "is_tnb": false,
-    
-    
-    
-    
-
-    "meta": {
-      "tags": [
-        "PREPAID"
-      ]
-    },
-
-    "delivery_details": {
-      "name": "Priya Verma",
-      "contact_num": "9123456780",
-      "address_line_1": "Hastings Ave, Azad Nagar, Nawabganj, Kanpur, Uttar Pradesh 208002",
-      "address_line_2": "Kanpur",
-      "city": "Kanpur",
-      "state": "Uttar Pradesh",
-      "country": "India",
-      "latitude": 26.4843968,
-      "longitude": 80.269205,
-      "email": "priya.verma@gmail.com",
-        "pin_code": "122008"
-    },
-    "return_details": {
-        "name": "Darsktore captain Diljeet",
-        "contact_num": "9532385430",
-        "address_line_1": "okhla ",
-        "address_line_2": "Delhi",
-        "city": "Delhi",
-        "state": "Delhi",
-        "country": "India",
-        "latitude": 28.4940959,
-        "longitude": 77.0927495,
-        "email": "mohitnandan81825@gmail.com",
-        "pin_code": "110002"
-    },
-    "pickup_details": {
-        "name": "Mohit Nandan",
-        "contact_num": "9140151251",
-        "address_line_1": "Taj Mahal, Eastern Gate, Forest Colony, Tajganj, Agra, Uttar Pradesh 282001",
-        "address_line_2": "Agra",
-        "city": "Agra",
-        "state": "Uttar Pradesh",
-        "country": "India",
-        "latitude": 27.171088,
-        "longitude": 78.0409694,
-        "email": "mohitnandan81825@gmail.com",
-        "pin_code": "560034"
-    },
-    "cod_details": {
-        "is_cod": false,
-        "collectable_amount": 100,
-        "total_value": 200,
-        "dynamic_adjustment_required": false,
-        "miscellaneous_charges": {
-            "handling_fee": 10,
-            "packing_cost": 10,
-            "priority_fee": 10
-        }
-    },
-    "package_weight": 700,
-    "package_length": 40,
-    "package_width": 28,
-    "package_height": 20,
-
-    "order_items": [
-        {
-            "item_quantity": 2,
-            "selling_price": 100,
-            "sku": "SKU_TEST_2026_001",
-            "product_name": "Herbal Green Tea Pack Herbal Green Tea Pack",
-            "description": "Refreshing herbal green tea blend Refreshing herbal green tea blend",
-            "mrp": 199,
-            "ean": "EAN2026000001",
-            "category": "Beverages",
-            "is_returnable": false,
-            "image": "https://images.pexels.com/photos/25811351/pexels-photo-25811351.jpeg?cs=srgb&dl=pexels-kichu98-25811351.jpg&fm=jpg",
-            "meta": {
-                "flavor": "herbal",
-                "weight": "150g",
-                "origin": "India",
-                "packaging": "paper box"
-            }
-        },
-        {
-            "item_quantity": 1,
-            "selling_price": 200,
-            "sku": "SKU_TEST_2026_002",
-            "product_name": "Black Coffee Premium Black Coffee Premium",
-            "description": "Strong roasted black coffee beans Strong roasted black coffee beans",
-            "mrp": 349,
-            "ean": "EAN2026000002",
-            "category": "Beverages",
-            "is_returnable": false,
-            "image": "https://images.pexels.com/photos/25811351/pexels-photo-25811351.jpeg?cs=srgb&dl=pexels-kichu98-25811351.jpg&fm=jpg",
-            "meta": {
-                "flavor": "dark_roast",
-                "weight": "500g",
-                "origin": "Colombia",
-                "packaging": "sealed bag"
-            }
-        },
-        {
-            "item_quantity": 1,
-            "selling_price": 200,
-            "sku": "SKU_TEST_2026_002",
-            "product_name": "Black Coffee Premium Black Coffee Premium",
-            "description": "Strong roasted black coffee beans Strong roasted black coffee beans",
-            "mrp": 349,
-            "ean": "EAN2026000002",
-            "category": "Beverages",
-            "is_returnable": false,
-            "image": "https://images.pexels.com/photos/25811351/pexels-photo-25811351.jpeg?cs=srgb&dl=pexels-kichu98-25811351.jpg&fm=jpg",
-            "meta": {
-                "flavor": "dark_roast",
-                "weight": "500g",
-                "origin": "Colombia",
-                "packaging": "sealed bag"
-            }
-        }
-    ]
-}'
-
-curl --location 'https://preprod.zorms.zfwhospitality.in/api/1/unicommerce/authToken' \
---header 'Content-Type: application/json' \
---data-raw '{
-   "username": "fabbox@zfwhospitality.com",
-    "password": "QWERTY!@#$%"
-}'
-
-curl --location 'https://preprod.zorms.zfwhospitality.in/api/1/unicommerce/waybill' \
---header 'Content-Type: application/json' \
---header 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNTgsImJyYW5kX2Rpc3BsYXlfbmFtZSI6InRlc3RpbmdfZmFiYm94IiwiYnJhbmRfaWQiOjEzNiwiYnJhbmRfcHJlZml4IjoiRkJYIiwiZXhwIjoxNzc3Mzg1NTI3fQ.f-p4abunH09y71Yqx7pmYuFXXnrXfMiL62_M-MOpnao' \
---data '{
-  "serviceType": "",
-  "handOverMode": "",
-  "returnShipmentFlag": "false",
-  "Shipment": {
-    "shipmentTag": "",
-    "code": "PMD1S2627/00722",
-    "customField": [],
-    "SaleOrderCode": "21229607",
-    "orderCode": "21229699705102",
-    "channelCode": "CUSTOM",
-    "channelName": "Regular_Orders",
-    "invoiceCode": "SIMHD1S2627/0738",
-    "orderDate": "24-Apr-2026 14:52:59",
-    "fullFilllmentTat": "29-Apr-2026 14:52:59",
-    "weight": "1001.000",
-    "length": "1",
-    "height": "1",
-    "breadth": "1",
-    "source": "unicommerce",
-    "numberOfBoxes": "1",
-    "items": [
-      {
-        "name": "Pr****",
-        "description": "Pro 26G - Unflavoured Concentrate - 1kg (WCU1000)",
-        "quantity": 1,
-        "skuCode": "F2610014",
-        "itemPrice": 2675.00,
-        "brand": "",
-        "color": "",
-        "category": "26",
-        "size": "",
-        "item_details": "",
-        "ean": "8906143891661",
-        "imageURL": "",
-        "hsnCode": "21061000",
-        "tags": ""
-      },
-      {
-        "name": "Ne****",
-        "description": "Next Gen Information Card",
-        "quantity": 1,
-        "skuCode": "F2710009",
-        "itemPrice": 0.00,
-        "brand": "",
-        "color": "",
-        "category": "27",
-        "size": "",
-        "item_details": "",
-        "ean": "",
-        "imageURL": "",
-        "hsnCode": "48201020",
-        "tags": ""
-      }
-    ]
-  },
-  "deliveryAddressId": "",
-  "deliveryAddressDetails": {
-    "name": "ni****",
-    "email": "",
-    "phone": "91****",
-    "address1": "C - 502 Prem Vishnu Apparents\nChafekar Bandhu Marg \nNear Khandoba Temple\nNext to Dhingra Park\nMulund East",
-    "address2": "",
-    "district": "",
-    "pincode": "122008",
-    "city": "MUMBAI",
-    "state": "Maharashtra",
-    "country": "India",
-    "stateCode": "MH",
-    "countryCode": "IN",
-    "gstin": "",
-    "alternatePhone": ""
-  },
-  "pickupAddressId": "",
-  "pickupAddressDetails": {
-    "name": "MU****",
-    "email": "",
-    "phone": "91****",
-    "address1": "The Whole Truth, Unit No G2, Bhagson House, 117, Marol Co Op Industrial Estate, Off Mathuradas Vassanji Road",
-    "address2": "Andheri Kurla Road, Andheri East",
-    "pincode": "400059",
-    "city": "Mumbai",
-    "state": "Maharashtra",
-    "country": "India",
-    "stateCode": "MH",
-    "countryCode": "IN",
-    "gstin": "27AADCF7463N1Z2",
-    "latitude": "",
-    "longitude": ""
-  },
-  "returnAddressId": "",
-  "returnAddressDetails": {
-    "pincode": "400059",
-    "country": "India",
-    "address2": "Andheri Kurla Road, Andheri East",
-    "city": "Mumbai",
-    "address1": "The Whole Truth, Unit No G2, Bhagson House, 117, Marol Co Op Industrial Estate, Off Mathuradas Vassanji Road",
-    "latitude": "",
-    "gstin": "27AADCF7463N1Z2",
-    "phone": "91****",
-    "countryCode": "IN",
-    "name": "MU****",
-    "stateCode": "MH",
-    "state": "Maharashtra",
-    "email": "",
-    "longitude": ""
-  },
-  "currencyCode": "INR",
-  "paymentMode": "COD",
-  "totalAmount": "2675.00",
-  "collectableAmount": "1000",
-  "courierName": ""
-}'
-
-
-
-curl --location 'https://preprod.zorms.zfwhospitality.in/api/1/easyecom/authenticate' \
---header 'Content-Type: application/json' \
---data-raw '{
-   "username": "fabbox@zfwhospitality.com",
-    "password": "QWERTY!@#$%",
-    "token": "wo3876556644",
-    "account_no": "",
-    "service_type": "",
-    "eeApiToken": "fabbox@zfwhospitality.com, QWERTY!@#$%, wo3876556644",
-    "attempts_offered": "3"
-}'
-
-curl --location 'https://preprod.zorms.zfwhospitality.in/api/1/easyecom/createShipment' \
---header 'Cache-Control: private,must-revalidate' \
---header 'Connection: keep-alive' \
---header 'Content-Encoding: gzip' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "order_data": {
-        "invoice_id": "REF_TEST_2589237034342349103",
-        "order_id": 97256311,
-        "blockSplit": 0,
-        "reference_code": "cc12-7",
-        "company_name": "EasyEcom Test Company",
-        "warehouse_id": 59032,
-        "seller_gst": "",
-        "assigned_company_name": "EasyEcom Test Company",
-        "assigned_warehouse_id": 59032,
-        "assigned_company_gst": "",
-        "warehouse_contact": "",
-        "pickup_address": "Pathardi phata ",
-        "pickup_city": "Nashik",
-        "pickup_state": "Maharashtra",
-        "pickup_state_code": "27",
-        "pickup_pin_code": "560001",
-        "pickup_country": "India",
-        "invoice_currency_code": "INR",
-        "order_type": "B2C",
-        "order_type_key": "retailorder",
-        "replacement_order": 0,
-        "marketplace": "Offline",
-        "MarketCId": 123,
-        "marketplace_id": 10,
-        "market_shipped": 0,
-        "merchant_c_id": 123,
-        "qcPassed": 1,
-        "salesmanUserId": 0,
-        "order_date": "2023-01-12 05:30:00",
-        "tat": "2023-01-13 17:30:17",
-        "available_after": null,
-        "invoice_date": "",
-        "import_date": "2023-01-12 17:30:17",
-        "last_update_date": "2023-01-12 17:30:18",
-        "manifest_date": null,
-        "manifest_no": null,
-        "invoice_number": null,
-        "marketplace_invoice_num": "ccc-1",
-        "shipping_last_update_date": null,
-        "batch_id": 1022237,
-        "batch_created_at": "2023-01-12 17:27:45",
-        "message": null,
-        "courier_aggregator_name": null,
-        "courier": "Zippee Outbound",
-        "carrier_id": 61546,
-        "awb_number": null,
-        "Package Weight": 200,
-        "Package Height": 3,
-        "Package Length": 3,
-        "Package Width": 3,
-        "order_status": "Open",
-        "order_status_id": 2,
-        "easyecom_order_history": null,
-        "shipping_status": null,
-        "shipping_status_id": null,
-        "tracking_url": null,
-        "shipping_history": null,
-        "payment_mode": "Online",
-        "payment_mode_id": 2,
-        "payment_gateway_transaction_number": null,
-        "buyer_gst": "NA",
-        "customer_name": "sdfgh",
-        "shipping_name": "sdfgh",
-        "contact_num": "9876543210",
-        "address_line_1": "hssr layout",
-        "address_line_2": null,
-        "city": "bangalore",
-        "pin_code": "122008",
-        "state": "Tamil Nadu",
-        "state_code": "33",
-        "country": "India",
-        "country_code": 0,
-        "email": "sdfgbh@gmail.com",
-        "latitude": null,
-        "longitude": null,
-        "billing_name": "sdfgh",
-        "billing_address_1": "hssr layout",
-        "billing_address_2": null,
-        "billing_city": "bangalore",
-        "billing_state": "Karnataka",
-        "billing_state_code": "29",
-        "billing_pin_code": "560001",
-        "billing_country": "India",
-        "billing_mobile": "9876543210",
-        "order_quantity": 2,
-        "documents": null,
-        "invoice_documents": null,
-        "collectable_amount": 100,
-        "total_amount": 200,
-        "total_tax": 3.0508,
-        "breakup_types": {
-            "Item Amount Excluding Tax": 16.9492,
-            "Item Amount IGST": 3.0508
-        },
-        "tcs_rate": 0,
-        "tcs_amount": 0,
-        "customer_code": "NA",
-        "order_items": [
+https://preprod.api.zfwhospitality.in/app/api/global-filter/?source=attendance&undefined=&page=1&page_size=10&is_default=0
+{
+    "data": {
+        "next": "https://preprod.api.zfwhospitality.in/app/api/global-filter/?is_default=0&page=2&page_size=10&source=attendance&undefined=",
+        "previous": null,
+        "total": 57122,
+        "total_pages": 5713,
+        "page": 1,
+        "page_size": 10,
+        "results": [
             {
-                "suborder_id": 146601869,
-                "suborder_num": "59032167352481783352367",
-                "invoicecode": null,
-                "item_collectable_amount": 0,
-                "shipment_type": "Zippee Outbound",
-                "suborder_quantity": 1,
-                "item_quantity": 1,
-                "returned_quantity": 0,
-                "cancelled_quantity": 0,
-                "shipped_quantity": 1,
-                "tax_type": "GST",
-                "product_id": 19452180,
-                "company_product_id": 76120647,
-                "sku": "CCSKU23",
-                "expiry_type": 0,
-                "sku_type": "Normal",
-                "sub_product_count": 1,
-                "marketplace_sku": "CCSKU23",
-                "listing_ref_number": "-",
-                "listing_id": "-",
-                "productName": "CCount",
-                "description": null,
-                "category": "CC5",
-                "brand": "CCC",
-                "brand_id": 7147017,
-                "model_no": "6513",
-                "product_tax_code": null,
-                "ean": "5",
-                "size": "NA",
-                "cost": 150,
-                "mrp": 200,
-                "weight": 200,
-                "length": 3,
-                "width": 3,
-                "height": 3,
-                "scheme_applied": 0,
-                "custom_fields": [],
-                "serials": [
-                    null
-                ],
-                "tax_rate": 18,
-                "selling_price": "20",
-                "breakup_types": {
-                    "Item Amount Excluding Tax": 16.9492,
-                    "Item Amount IGST": 3.0508
-                },
-                "station_scanned_quantity": 0,
-                "batch_scanned_quantity": 0,
-                "assigned_quantity": 1
+                "rider_id": 7262,
+                "attendance_date": "2026-04-08",
+                "dark_store_id": 74,
+                "punch_in_time": "2026-04-08T16:35:57.123631",
+                "punch_out_time": null,
+                "logging_hours": null,
+                "status": "present",
+                "manually_marked": false,
+                "auto_punch_out": false,
+                "attendance_id": 59998,
+                "rider_name": "Ojas Nimaje",
+                "dark_store_name": "preprod_expresshub_test",
+                "city": "Gurugram"
+            },
+            {
+                "rider_id": 7287,
+                "attendance_date": "2026-04-07",
+                "dark_store_id": 82,
+                "punch_in_time": "2026-04-07T16:03:45.114676",
+                "punch_out_time": null,
+                "logging_hours": null,
+                "status": "present",
+                "manually_marked": false,
+                "auto_punch_out": false,
+                "attendance_id": 59997,
+                "rider_name": "Test Best",
+                "dark_store_name": "storetransfer",
+                "city": "Gurugram"
+            },
+            {
+                "rider_id": 7269,
+                "attendance_date": "2026-04-06",
+                "dark_store_id": 73,
+                "punch_in_time": "2026-04-06T10:40:07.719768",
+                "punch_out_time": null,
+                "logging_hours": null,
+                "status": "present",
+                "manually_marked": false,
+                "auto_punch_out": false,
+                "attendance_id": 59996,
+                "rider_name": "Avik B",
+                "dark_store_name": "geofence_address",
+                "city": "Gurugram"
+            },
+            {
+                "rider_id": 7259,
+                "attendance_date": "2026-04-01",
+                "dark_store_id": 74,
+                "punch_in_time": "2026-04-01T09:34:12.033549",
+                "punch_out_time": null,
+                "logging_hours": null,
+                "status": "present",
+                "manually_marked": false,
+                "auto_punch_out": false,
+                "attendance_id": 59993,
+                "rider_name": "Test Beng",
+                "dark_store_name": "preprod_expresshub_test",
+                "city": "Gurugram"
+            },
+            {
+                "rider_id": 7288,
+                "attendance_date": "2026-04-01",
+                "dark_store_id": 83,
+                "punch_in_time": "2026-04-01T19:03:12.806191",
+                "punch_out_time": null,
+                "logging_hours": null,
+                "status": "present",
+                "manually_marked": false,
+                "auto_punch_out": false,
+                "attendance_id": 59995,
+                "rider_name": "Test Mani",
+                "dark_store_name": "manifest w2",
+                "city": "Gurugram"
+            },
+            {
+                "rider_id": 7286,
+                "attendance_date": "2026-04-01",
+                "dark_store_id": 81,
+                "punch_in_time": "2026-04-01T18:11:44.326785",
+                "punch_out_time": null,
+                "logging_hours": 15.81,
+                "status": "present",
+                "manually_marked": false,
+                "auto_punch_out": true,
+                "attendance_id": 2534,
+                "rider_name": "Shubham MarchTwoSix",
+                "dark_store_name": "manifest w1",
+                "city": "Gurugram"
+            },
+            {
+                "rider_id": 7259,
+                "attendance_date": "2026-03-31",
+                "dark_store_id": 74,
+                "punch_in_time": "2026-03-31T10:39:29.654343",
+                "punch_out_time": null,
+                "logging_hours": null,
+                "status": "present",
+                "manually_marked": false,
+                "auto_punch_out": false,
+                "attendance_id": 59988,
+                "rider_name": "Test Beng",
+                "dark_store_name": "preprod_expresshub_test",
+                "city": "Gurugram"
+            },
+            {
+                "rider_id": 7287,
+                "attendance_date": "2026-03-31",
+                "dark_store_id": 82,
+                "punch_in_time": "2026-03-31T23:11:00",
+                "punch_out_time": "2026-03-31T16:24:15.020961",
+                "logging_hours": 2.91,
+                "status": "present",
+                "manually_marked": true,
+                "auto_punch_out": false,
+                "attendance_id": 59989,
+                "rider_name": "Test Best",
+                "dark_store_name": "storetransfer",
+                "city": "Gurugram"
+            },
+            {
+                "rider_id": 7262,
+                "attendance_date": "2026-03-31",
+                "dark_store_id": 74,
+                "punch_in_time": "2026-03-31T14:47:26.145423",
+                "punch_out_time": "2026-03-31T15:56:23.251291",
+                "logging_hours": 1.15,
+                "status": "present",
+                "manually_marked": false,
+                "auto_punch_out": false,
+                "attendance_id": 59990,
+                "rider_name": "Ojas Nimaje",
+                "dark_store_name": "preprod_expresshub_test",
+                "city": "Gurugram"
+            },
+            {
+                "rider_id": 7262,
+                "attendance_date": "2026-03-31",
+                "dark_store_id": 74,
+                "punch_in_time": "2026-03-31T15:57:01.652485",
+                "punch_out_time": null,
+                "logging_hours": null,
+                "status": "present",
+                "manually_marked": false,
+                "auto_punch_out": false,
+                "attendance_id": 59991,
+                "rider_name": "Ojas Nimaje",
+                "dark_store_name": "preprod_expresshub_test",
+                "city": "Gurugram"
             }
         ]
     },
-    "credentials": {
-        "username": "fabbox@zfwhospitality.com",
-        "password": "QWERTY!@#$%",
-        "token": "wo3876556644",
-        "account_no": "",
-        "service_type": "",
-        "eeApiToken": "fabbox@zfwhospitality.com, QWERTY!@#$%, wo3876556644",
-        "attempts_offered": "3"
-    }
-}'
+    "message": "Data fetched successfully",
+    "status": "success",
+    "result": true
+}
+
+https://preprod.api.zfwhospitality.in/app/api/riders/deactivated/?darkstore_id=
+{
+    "data": {
+        "next": "https://preprod.api.zfwhospitality.in/app/api/riders/deactivated/?darkstore_id=&page=2",
+        "previous": null,
+        "total": 55,
+        "total_pages": 3,
+        "page": 1,
+        "page_size": 20,
+        "results": [
+            {
+                "id": 6409,
+                "rider_name": "Test Jagran",
+                "city": "Delhi",
+                "darkstore": "okhla 2hr",
+                "phone_number": "+917000000999",
+                "onboarding_completed_at": "2025-12-10T10:28:25.970791",
+                "deactivated_at": "2025-12-10T10:26:00.367332"
+            },
+            {
+                "id": 4313,
+                "rider_name": "Test Oneone",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+916999999981",
+                "onboarding_completed_at": "2025-10-30T09:21:41.933814",
+                "deactivated_at": "2025-10-30T09:19:07.619259"
+            },
+            {
+                "id": 4226,
+                "rider_name": "Test Sixteen",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+916999999993",
+                "onboarding_completed_at": "2025-10-27T19:04:08.505015",
+                "deactivated_at": "2025-10-27T18:54:21.750805"
+            },
+            {
+                "id": 4141,
+                "rider_name": "Test Four",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+916222221111",
+                "onboarding_completed_at": "2025-10-25T10:35:17.560387",
+                "deactivated_at": "2025-10-25T10:32:21.219235"
+            },
+            {
+                "id": 4109,
+                "rider_name": "Test Three",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+916111111111",
+                "onboarding_completed_at": "2025-10-24T10:23:22.355875",
+                "deactivated_at": "2025-10-24T10:20:51.063109"
+            },
+            {
+                "id": 3094,
+                "rider_name": "Pankaj Singh",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+919315556467",
+                "onboarding_completed_at": "2025-09-17T12:30:58.029230",
+                "deactivated_at": "2025-09-17T10:19:40.859688"
+            },
+            {
+                "id": 2836,
+                "rider_name": "Test Two",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+916363696900",
+                "onboarding_completed_at": "2025-09-11T10:49:16.189910",
+                "deactivated_at": "2025-09-11T10:44:17.879493"
+            },
+            {
+                "id": 1333,
+                "rider_name": "Test seven",
+                "city": "Chennai",
+                "darkstore": "zippee_periyamet_sdd",
+                "phone_number": "+919496454818",
+                "onboarding_completed_at": "2025-08-11T11:22:21.883764",
+                "deactivated_at": "2025-08-11T11:17:21.629435"
+            },
+            {
+                "id": 1304,
+                "rider_name": "Dharmendra Jha",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+918376836050",
+                "onboarding_completed_at": "2025-08-12T14:32:48.293656",
+                "deactivated_at": "2025-08-07T21:43:40.228783"
+            },
+            {
+                "id": 1256,
+                "rider_name": "Test Mohit",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+919852558086",
+                "onboarding_completed_at": "2025-08-05T11:09:24.337871",
+                "deactivated_at": "2025-08-05T11:04:20.275547"
+            },
+            {
+                "id": 1213,
+                "rider_name": "Test Aman",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+919484563358",
+                "onboarding_completed_at": "2025-08-02T11:10:44.284262",
+                "deactivated_at": "2025-08-02T11:06:11.953128"
+            },
+            {
+                "id": 1183,
+                "rider_name": "Test Prabhat",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+919461580632",
+                "onboarding_completed_at": "2025-07-31T10:47:24.583718",
+                "deactivated_at": "2025-07-31T10:44:32.724897"
+            },
+            {
+                "id": 1153,
+                "rider_name": "Lokesh Singh",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+916794594649",
+                "onboarding_completed_at": "2025-07-30T03:01:31.937024",
+                "deactivated_at": "2025-07-30T02:57:59.603625"
+            },
+            {
+                "id": 1136,
+                "rider_name": "Test Prabhat",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+919464684046",
+                "onboarding_completed_at": "2025-07-29T12:44:21.153820",
+                "deactivated_at": "2025-07-29T12:39:02.657401"
+            },
+            {
+                "id": 1095,
+                "rider_name": "Test Bipin",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+919461681643",
+                "onboarding_completed_at": "2025-07-26T11:07:37.474984",
+                "deactivated_at": "2025-07-26T11:01:11.105380"
+            },
+            {
+                "id": 1082,
+                "rider_name": "Test Shubham",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+919496181016",
+                "onboarding_completed_at": "2025-07-25T10:48:58.761860",
+                "deactivated_at": "2025-07-25T10:43:47.805992"
+            },
+            {
+                "id": 1072,
+                "rider_name": "Test Shiv",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+919494380164",
+                "onboarding_completed_at": "2025-07-24T11:38:39.083665",
+                "deactivated_at": "2025-07-24T11:29:32.504855"
+            },
+            {
+                "id": 1059,
+                "rider_name": "Test Garima",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+916494949499",
+                "onboarding_completed_at": "2025-07-23T11:39:36.708865",
+                "deactivated_at": "2025-07-23T11:34:23.829437"
+            },
+            {
+                "id": 1045,
+                "rider_name": "Test Realme",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+919764649799",
+                "onboarding_completed_at": "2025-07-22T18:14:34.325872",
+                "deactivated_at": "2025-07-22T18:09:11.618585"
+            },
+            {
+                "id": 952,
+                "rider_name": "Test Kamlesh",
+                "city": "Delhi",
+                "darkstore": "zippee_okhla_sdd",
+                "phone_number": "+919764881343",
+                "onboarding_completed_at": "2025-07-18T19:01:34.326000",
+                "deactivated_at": "2025-07-18T18:55:43.522334"
+            }
+        ]
+    },
+    "message": "Deactivated riders fetched successfully.",
+    "status": "success",
+    "result": true
+}
+
+
+https://preprod.api.zfwhospitality.in/app/api/rider/payout/tracking/?page=1&page_size=10&rider_name=&start_date=&end_date=
+{
+    "data": {
+        "next": "https://preprod.api.zfwhospitality.in/app/api/rider/payout/tracking/?end_date=&page=2&page_size=10&rider_name=&start_date=",
+        "previous": null,
+        "total": 187,
+        "total_pages": 19,
+        "page": 1,
+        "page_size": 10,
+        "results": [
+            {
+                "payout_id": 217,
+                "rider_id": "Zippee Suraj Shinge",
+                "rider_name": "Suraj Shinge",
+                "rider_type": "zippee",
+                "start_date": "2025-11-01",
+                "end_date": "2025-11-30",
+                "working_days": 25.0,
+                "dark_store_name": "koregaon park",
+                "city_name": "Pune",
+                "total_payout": 0.9,
+                "payout_date": null,
+                "created_at": "2025-12-01T06:00:10.086373+05:30",
+                "updated_payout": null,
+                "base_pay": 1.0,
+                "days_off": 5,
+                "payable_days": 30.0,
+                "daily_pay_rate": 0.03
+            },
+            {
+                "payout_id": 216,
+                "rider_id": "ZD Vishal",
+                "rider_name": "Vishal Vishal",
+                "rider_type": "zippee",
+                "start_date": "2025-11-01",
+                "end_date": "2025-11-30",
+                "working_days": 0.0,
+                "dark_store_name": "zippee_okhla_sdd",
+                "city_name": "Delhi",
+                "total_payout": 0.0,
+                "payout_date": null,
+                "created_at": "2025-12-01T06:00:09.952777+05:30",
+                "updated_payout": null,
+                "base_pay": 20000.0,
+                "days_off": 0,
+                "payable_days": 0.0,
+                "daily_pay_rate": 666.67
+            },
+            {
+                "payout_id": 215,
+                "rider_id": "ZD Vipin Kumar",
+                "rider_name": "Vipin Kumar",
+                "rider_type": "zippee",
+                "start_date": "2025-11-01",
+                "end_date": "2025-11-30",
+                "working_days": 0.0,
+                "dark_store_name": "zippee_okhla_sdd",
+                "city_name": "Delhi",
+                "total_payout": 0.0,
+                "payout_date": null,
+                "created_at": "2025-12-01T06:00:09.948081+05:30",
+                "updated_payout": null,
+                "base_pay": 25000.0,
+                "days_off": 0,
+                "payable_days": 0.0,
+                "daily_pay_rate": 833.33
+            },
+            {
+                "payout_id": 214,
+                "rider_id": "ZD VINOD",
+                "rider_name": "Vinod Vinod",
+                "rider_type": "zippee",
+                "start_date": "2025-11-01",
+                "end_date": "2025-11-30",
+                "working_days": 0.0,
+                "dark_store_name": "zippee_okhla_sdd",
+                "city_name": "Delhi",
+                "total_payout": 0.0,
+                "payout_date": null,
+                "created_at": "2025-12-01T06:00:09.941055+05:30",
+                "updated_payout": null,
+                "base_pay": 25000.0,
+                "days_off": 0,
+                "payable_days": 0.0,
+                "daily_pay_rate": 833.33
+            },
+            {
+                "payout_id": 213,
+                "rider_id": "ZD Uttam",
+                "rider_name": "Uttam Sharma",
+                "rider_type": "zippee",
+                "start_date": "2025-11-01",
+                "end_date": "2025-11-30",
+                "working_days": 0.0,
+                "dark_store_name": "zippee_okhla_sdd",
+                "city_name": "Delhi",
+                "total_payout": 0.0,
+                "payout_date": null,
+                "created_at": "2025-12-01T06:00:09.935765+05:30",
+                "updated_payout": null,
+                "base_pay": 17000.0,
+                "days_off": 0,
+                "payable_days": 0.0,
+                "daily_pay_rate": 566.67
+            },
+            {
+                "payout_id": 212,
+                "rider_id": "ZD Sudheer Kumar",
+                "rider_name": "Sudheer Kumar",
+                "rider_type": "zippee",
+                "start_date": "2025-11-01",
+                "end_date": "2025-11-30",
+                "working_days": 0.0,
+                "dark_store_name": "zippee_okhla_sdd",
+                "city_name": "Delhi",
+                "total_payout": 0.0,
+                "payout_date": null,
+                "created_at": "2025-12-01T06:00:09.928819+05:30",
+                "updated_payout": null,
+                "base_pay": 25000.0,
+                "days_off": 0,
+                "payable_days": 0.0,
+                "daily_pay_rate": 833.33
+            },
+            {
+                "payout_id": 211,
+                "rider_id": "ZD SUDESH KUMAR",
+                "rider_name": "Sudesh Kumar",
+                "rider_type": "zippee",
+                "start_date": "2025-11-01",
+                "end_date": "2025-11-30",
+                "working_days": 0.0,
+                "dark_store_name": "zippee_okhla_sdd",
+                "city_name": "Delhi",
+                "total_payout": 0.0,
+                "payout_date": null,
+                "created_at": "2025-12-01T06:00:09.924557+05:30",
+                "updated_payout": null,
+                "base_pay": 10000.0,
+                "days_off": 0,
+                "payable_days": 0.0,
+                "daily_pay_rate": 333.33
+            },
+            {
+                "payout_id": 210,
+                "rider_id": "ZD SUBHAS KUMAR",
+                "rider_name": "Subhas Kumar",
+                "rider_type": "zippee",
+                "start_date": "2025-11-01",
+                "end_date": "2025-11-30",
+                "working_days": 0.0,
+                "dark_store_name": "zippee_okhla_sdd",
+                "city_name": "Delhi",
+                "total_payout": 0.0,
+                "payout_date": null,
+                "created_at": "2025-12-01T06:00:09.919273+05:30",
+                "updated_payout": null,
+                "base_pay": 20000.0,
+                "days_off": 0,
+                "payable_days": 0.0,
+                "daily_pay_rate": 666.67
+            },
+            {
+                "payout_id": 209,
+                "rider_id": "ZD Samarjeet pal",
+                "rider_name": "Samarjeet Pal",
+                "rider_type": "zippee",
+                "start_date": "2025-11-01",
+                "end_date": "2025-11-30",
+                "working_days": 0.0,
+                "dark_store_name": "tenxu_okhla_sdd",
+                "city_name": "Delhi",
+                "total_payout": 0.0,
+                "payout_date": null,
+                "created_at": "2025-12-01T06:00:09.910293+05:30",
+                "updated_payout": null,
+                "base_pay": 17000.0,
+                "days_off": 0,
+                "payable_days": 0.0,
+                "daily_pay_rate": 566.67
+            },
+            {
+                "payout_id": 208,
+                "rider_id": "ZD PRINCE",
+                "rider_name": "Prince Jain",
+                "rider_type": "zippee",
+                "start_date": "2025-11-01",
+                "end_date": "2025-11-30",
+                "working_days": 0.0,
+                "dark_store_name": "zippee_okhla_sdd",
+                "city_name": "Delhi",
+                "total_payout": 0.0,
+                "payout_date": null,
+                "created_at": "2025-12-01T06:00:09.900435+05:30",
+                "updated_payout": null,
+                "base_pay": 25000.0,
+                "days_off": 0,
+                "payable_days": 0.0,
+                "daily_pay_rate": 833.33
+            }
+        ]
+    },
+    "message": "Payout status fetched successfully.",
+    "status": "success",
+    "result": true
+}
+
+https://preprod.api.zfwhospitality.in/app/api/payroll/?page=1&page_size=10
+{
+    "data": {
+        "next": null,
+        "previous": null,
+        "total": 0,
+        "total_pages": 0,
+        "page": 1,
+        "page_size": 10,
+        "results": []
+    },
+    "message": "Payroll fetched successfully",
+    "status": "success",
+    "result": true
+}
+
+https://preprod.api.zfwhospitality.in/app/api/redo-logs/?page=1&page_size=10
+
+{
+    "data": {
+        "next": "https://preprod.api.zfwhospitality.in/app/api/redo-logs/?page=2&page_size=10",
+        "previous": null,
+        "total": 160,
+        "total_pages": 16,
+        "page": 1,
+        "page_size": 10,
+        "results": [
+            {
+                "user_id": 547,
+                "event": "cash settlement redone",
+                "action": "Admin Purvee Admin redo cash settlement 44606 for rider Mohit Nandan for ₹90.00.",
+                "created_at": "2026-03-16T17:06:59",
+                "comment": "asdf",
+                "admin_name": "Purvee Admin",
+                "dark_store_name": "zippee_okhla_sdd"
+            },
+            {
+                "user_id": 547,
+                "event": "cash settlement redone",
+                "action": "Admin Purvee Admin redo cash settlement 44612 for rider Mohit Nandan for ₹100.00.",
+                "created_at": "2026-03-16T17:05:57",
+                "comment": "nk",
+                "admin_name": "Purvee Admin",
+                "dark_store_name": "zippee_okhla_sdd"
+            },
+            {
+                "user_id": 547,
+                "event": "static QR settlement redone",
+                "action": "Admin Purvee Admin redo static_qr settlement 44614 for rider Mohit Nandan for ₹100.00.",
+                "created_at": "2026-03-16T17:05:16",
+                "comment": "sf",
+                "admin_name": "Purvee Admin",
+                "dark_store_name": "zippee_okhla_sdd"
+            },
+            {
+                "user_id": 547,
+                "event": "static QR settlement redone",
+                "action": "Admin Purvee Admin redo static_qr settlement 44615 for dark_store okhla for ₹100.00.",
+                "created_at": "2026-03-16T17:02:35",
+                "comment": "199",
+                "admin_name": "Purvee Admin",
+                "dark_store_name": "zippee_okhla_sdd"
+            },
+            {
+                "user_id": 547,
+                "event": "cash settlement redone",
+                "action": "Admin Purvee Admin redo cash settlement 44617 for dark_store andheri for ₹100.00.",
+                "created_at": "2026-03-16T16:56:50",
+                "comment": "adsf",
+                "admin_name": "Purvee Admin",
+                "dark_store_name": "zippee_andheri_sdd"
+            },
+            {
+                "user_id": 803,
+                "event": "cash settlement redone",
+                "action": "Admin Tarun redo cash settlement 44600 for rider Test TK for ₹150.00.",
+                "created_at": "2026-01-16T12:37:08",
+                "comment": "faerfaerf",
+                "admin_name": "Tarun",
+                "dark_store_name": "gurugram dlf 1 [test1]"
+            },
+            {
+                "user_id": 664,
+                "event": "cash settlement redone",
+                "action": "Admin Shenbagaraja M redo cash settlement 32383 for rider Maha Lakshmi for ₹3498.00.",
+                "created_at": "2025-10-01T12:15:59",
+                "comment": "wrongly Marketed Cash  ",
+                "admin_name": "Shenbagaraja M",
+                "dark_store_name": "zippee_periyamet_sdd"
+            },
+            {
+                "user_id": 651,
+                "event": "static QR settlement redone",
+                "action": "Admin Laxman Singh redo static_qr settlement 27383 for rider Ibrahim Rajpur for ₹814.00.",
+                "created_at": "2025-09-07T10:15:08",
+                "comment": "NOT MATCH",
+                "admin_name": "Laxman Singh",
+                "dark_store_name": "zippee_okhla_sdd"
+            },
+            {
+                "user_id": 651,
+                "event": "static QR settlement redone",
+                "action": "Admin Laxman Singh redo static_qr settlement 27382 for rider Ibrahim Rajpur for ₹570.00.",
+                "created_at": "2025-09-07T10:13:25",
+                "comment": "NOT MATCH",
+                "admin_name": "Laxman Singh",
+                "dark_store_name": "zippee_okhla_sdd"
+            },
+            {
+                "user_id": 651,
+                "event": "cash settlement redone",
+                "action": "Admin Laxman Singh redo cash settlement 26412 for rider Mohd Anwar for ₹1667.00.",
+                "created_at": "2025-09-05T09:24:39",
+                "comment": "NOT MATCH",
+                "admin_name": "Laxman Singh",
+                "dark_store_name": "zippee_okhla_sdd"
+            }
+        ]
+    },
+    "message": "Redo logs fetched successfully.",
+    "status": "success",
+    "result": true
+}
+
+https://preprod.api.zfwhospitality.in/app/api/riders/kyc/status/?page=1&page_size=10&darkstore_id=&rider_id=DESC&rider_name=&kyc_status=&document_type=&status=
+
+{
+    "data": {
+        "next": "https://preprod.api.zfwhospitality.in/app/api/riders/kyc/status/?darkstore_id=&document_type=&kyc_status=&page=2&page_size=10&rider_id=DESC&rider_name=&status=",
+        "previous": null,
+        "total": 1588,
+        "total_pages": 159,
+        "page": 1,
+        "page_size": 10,
+        "results": [
+            {
+                "id": 7293,
+                "rider_name": "Test Aryannew",
+                "kyc_status": "verified",
+                "vehicle_status": "verified",
+                "pan_kyc_status": "verified",
+                "aadhaar_kyc_status": "verified",
+                "selfie_kyc_status": "verified",
+                "driving_license_status": "verified",
+                "darkstore": "gurugram 2hr",
+                "city": "Delhi"
+            },
+            {
+                "id": 7292,
+                "rider_name": "Test Pincode",
+                "kyc_status": "verified",
+                "vehicle_status": "verified",
+                "pan_kyc_status": "verified",
+                "aadhaar_kyc_status": "verified",
+                "selfie_kyc_status": "verified",
+                "driving_license_status": "verified",
+                "darkstore": "express_warehouse",
+                "city": "Gurugram"
+            },
+            {
+                "id": 7291,
+                "rider_name": "Test Cheast",
+                "kyc_status": "verified",
+                "vehicle_status": "pending",
+                "pan_kyc_status": "pending",
+                "aadhaar_kyc_status": "verified",
+                "selfie_kyc_status": "pending",
+                "driving_license_status": "verified",
+                "darkstore": "okhla 2hr",
+                "city": "Delhi"
+            },
+            {
+                "id": 7290,
+                "rider_name": "Test HardikG",
+                "kyc_status": "verified",
+                "vehicle_status": "verified",
+                "pan_kyc_status": "verified",
+                "aadhaar_kyc_status": "verified",
+                "selfie_kyc_status": "verified",
+                "driving_license_status": "verified",
+                "darkstore": "gurugram 2hr",
+                "city": "Delhi"
+            },
+            {
+                "id": 7289,
+                "rider_name": "Five April",
+                "kyc_status": "verified",
+                "vehicle_status": "verified",
+                "pan_kyc_status": "verified",
+                "aadhaar_kyc_status": "verified",
+                "selfie_kyc_status": "verified",
+                "driving_license_status": "verified",
+                "darkstore": "preprod_expresshub_test",
+                "city": "Gurugram"
+            },
+            {
+                "id": 7288,
+                "rider_name": "Test Mani",
+                "kyc_status": "verified",
+                "vehicle_status": "verified",
+                "pan_kyc_status": "verified",
+                "aadhaar_kyc_status": "verified",
+                "selfie_kyc_status": "verified",
+                "driving_license_status": "verified",
+                "darkstore": "manifest w2",
+                "city": "Gurugram"
+            },
+            {
+                "id": 7287,
+                "rider_name": "Test Best",
+                "kyc_status": "verified",
+                "vehicle_status": "pending",
+                "pan_kyc_status": "pending",
+                "aadhaar_kyc_status": "verified",
+                "selfie_kyc_status": "pending",
+                "driving_license_status": "verified",
+                "darkstore": "storetransfer",
+                "city": "Gurugram"
+            },
+            {
+                "id": 7286,
+                "rider_name": "Shubham MarchTwoSix",
+                "kyc_status": "verified",
+                "vehicle_status": "pending",
+                "pan_kyc_status": "pending",
+                "aadhaar_kyc_status": "verified",
+                "selfie_kyc_status": "pending",
+                "driving_license_status": "verified",
+                "darkstore": "manifest w1",
+                "city": "Gurugram"
+            },
+            {
+                "id": 7285,
+                "rider_name": "Hardik Gudda",
+                "kyc_status": "verified",
+                "vehicle_status": "pending",
+                "pan_kyc_status": "pending",
+                "aadhaar_kyc_status": "verified",
+                "selfie_kyc_status": "pending",
+                "driving_license_status": "verified",
+                "darkstore": "okhla 2hr",
+                "city": "Delhi"
+            },
+            {
+                "id": 7284,
+                "rider_name": "GL Test",
+                "kyc_status": "verified",
+                "vehicle_status": "verified",
+                "pan_kyc_status": "verified",
+                "aadhaar_kyc_status": "verified",
+                "selfie_kyc_status": "verified",
+                "driving_license_status": "verified",
+                "darkstore": "testing_geofence_preprod",
+                "city": "Gurugram"
+            }
+        ]
+    },
+    "message": "Rider KYC status fetched successfully.",
+    "status": "success",
+    "result": true
+}
+https://preprod.api.zfwhospitality.in/app/api/riders/kpi/?
+{
+    "data": {
+        "total_pending_on_riders": 56385760.64,
+        "amount_raised_for_settlement": 6007889.0,
+        "total_pending_settlements": 1090,
+        "total_active_riders": 0
+    },
+    "message": "Rider KPIs Fetched Successfully",
+    "status": "success",
+    "result": true
+}
+
+
+https://preprod.api.zfwhospitality.in/app/api/settlements/darkstore/?page=1&page_size=10&utr_number=&status=&darkstore_id=&start_date=&end_date=
+
+{
+    "data": {
+        "next": "https://preprod.api.zfwhospitality.in/app/api/settlements/darkstore/?darkstore_id=&end_date=&page=2&page_size=10&start_date=&status=&utr_number=",
+        "previous": null,
+        "total": 18893,
+        "total_pages": 1890,
+        "page": 1,
+        "page_size": 10,
+        "results": [
+            {
+                "settlement_id": 44662,
+                "total_amount": 1.4,
+                "outstanding_amount": 71627.6,
+                "settlement_date": "2026-05-02T13:59:18.811608+05:30",
+                "remarks": null,
+                "status": "approved",
+                "utr_number": null,
+                "upload_receipt": null,
+                "dark_store_name": "okhla 2hr",
+                "settlement_type": "dynamic_qr"
+            },
+            {
+                "settlement_id": 44660,
+                "total_amount": 5978.0,
+                "outstanding_amount": 65651.0,
+                "settlement_date": "2026-04-10T17:36:03.582641+05:30",
+                "remarks": null,
+                "status": "approved",
+                "utr_number": null,
+                "upload_receipt": null,
+                "dark_store_name": "okhla 2hr",
+                "settlement_type": "dynamic_qr"
+            },
+            {
+                "settlement_id": 44658,
+                "total_amount": 1.0,
+                "outstanding_amount": 125798.0,
+                "settlement_date": "2026-04-07T17:45:52.217187+05:30",
+                "remarks": null,
+                "status": "approved",
+                "utr_number": null,
+                "upload_receipt": null,
+                "dark_store_name": "Dark Store 48",
+                "settlement_type": "dynamic_qr"
+            },
+            {
+                "settlement_id": 44656,
+                "total_amount": 1.0,
+                "outstanding_amount": 71628.0,
+                "settlement_date": "2026-04-07T13:20:16.752831+05:30",
+                "remarks": null,
+                "status": "approved",
+                "utr_number": null,
+                "upload_receipt": null,
+                "dark_store_name": "okhla 2hr",
+                "settlement_type": "dynamic_qr"
+            },
+            {
+                "settlement_id": 44654,
+                "total_amount": 60.0,
+                "outstanding_amount": 86726.0,
+                "settlement_date": "2026-04-06T22:00:13.571179+05:30",
+                "remarks": null,
+                "status": "approved",
+                "utr_number": null,
+                "upload_receipt": null,
+                "dark_store_name": "KOL-Supertails",
+                "settlement_type": "dynamic_qr"
+            },
+            {
+                "settlement_id": 44652,
+                "total_amount": 70.0,
+                "outstanding_amount": 71559.0,
+                "settlement_date": "2026-04-06T17:59:25.078922+05:30",
+                "remarks": null,
+                "status": "approved",
+                "utr_number": null,
+                "upload_receipt": null,
+                "dark_store_name": "okhla 2hr",
+                "settlement_type": "dynamic_qr"
+            },
+            {
+                "settlement_id": 44650,
+                "total_amount": 4.0,
+                "outstanding_amount": 71625.0,
+                "settlement_date": "2026-04-06T12:52:29.709653+05:30",
+                "remarks": null,
+                "status": "approved",
+                "utr_number": null,
+                "upload_receipt": null,
+                "dark_store_name": "okhla 2hr",
+                "settlement_type": "dynamic_qr"
+            },
+            {
+                "settlement_id": 44648,
+                "total_amount": 100.0,
+                "outstanding_amount": 71529.0,
+                "settlement_date": "2026-04-05T08:39:29.855477+05:30",
+                "remarks": null,
+                "status": "approved",
+                "utr_number": null,
+                "upload_receipt": null,
+                "dark_store_name": "okhla 2hr",
+                "settlement_type": "dynamic_qr"
+            },
+            {
+                "settlement_id": 44646,
+                "total_amount": 100.0,
+                "outstanding_amount": 71529.0,
+                "settlement_date": "2026-04-05T08:38:03.711442+05:30",
+                "remarks": null,
+                "status": "approved",
+                "utr_number": null,
+                "upload_receipt": null,
+                "dark_store_name": "okhla 2hr",
+                "settlement_type": "dynamic_qr"
+            },
+            {
+                "settlement_id": 44644,
+                "total_amount": 100.0,
+                "outstanding_amount": 71529.0,
+                "settlement_date": "2026-04-05T07:53:24.701995+05:30",
+                "remarks": null,
+                "status": "approved",
+                "utr_number": null,
+                "upload_receipt": null,
+                "dark_store_name": "okhla 2hr",
+                "settlement_type": "dynamic_qr"
+            }
+        ]
+    },
+    "message": "Settlements fetched successfully.",
+    "status": "success",
+    "result": true
+}
+
+https://preprod.api.zfwhospitality.in/app/api/settlements/company/
+{
+    "data": {
+        "next": "https://preprod.api.zfwhospitality.in/app/api/settlements/company/?page=2",
+        "previous": null,
+        "total": 18893,
+        "total_pages": 945,
+        "page": 1,
+        "page_size": 20,
+        "results": [
+            {
+                "settlement_id": 44662,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 1.4,
+                "outstanding_amount": 71627.6,
+                "city": "Delhi",
+                "settlement_date": "2026-05-02T13:59:18.811608+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Test Pincode"
+            },
+            {
+                "settlement_id": 44660,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 5978.0,
+                "outstanding_amount": 65651.0,
+                "city": "Delhi",
+                "settlement_date": "2026-04-10T17:36:03.582641+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Aryan Hayaran"
+            },
+            {
+                "settlement_id": 44658,
+                "darkstore_id": 48,
+                "darkstore_name": "Dark Store 48",
+                "settlement_amount": 1.0,
+                "outstanding_amount": 125798.0,
+                "city": "Pune",
+                "settlement_date": "2026-04-07T17:45:52.217187+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Test Cheast"
+            },
+            {
+                "settlement_id": 44656,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 1.0,
+                "outstanding_amount": 71628.0,
+                "city": "Delhi",
+                "settlement_date": "2026-04-07T13:20:16.752831+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Test Best"
+            },
+            {
+                "settlement_id": 44654,
+                "darkstore_id": 45,
+                "darkstore_name": "KOL-Supertails",
+                "settlement_amount": 60.0,
+                "outstanding_amount": 86726.0,
+                "city": "Kolkata",
+                "settlement_date": "2026-04-06T22:00:13.571179+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Aryan Hayaran"
+            },
+            {
+                "settlement_id": 44652,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 70.0,
+                "outstanding_amount": 71559.0,
+                "city": "Delhi",
+                "settlement_date": "2026-04-06T17:59:25.078922+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Aryan Hayaran"
+            },
+            {
+                "settlement_id": 44650,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 4.0,
+                "outstanding_amount": 71625.0,
+                "city": "Delhi",
+                "settlement_date": "2026-04-06T12:52:29.709653+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Test HardikG"
+            },
+            {
+                "settlement_id": 44648,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 100.0,
+                "outstanding_amount": 71529.0,
+                "city": "Delhi",
+                "settlement_date": "2026-04-05T08:39:29.855477+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Mahesh Sharma"
+            },
+            {
+                "settlement_id": 44646,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 100.0,
+                "outstanding_amount": 71529.0,
+                "city": "Delhi",
+                "settlement_date": "2026-04-05T08:38:03.711442+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Mahesh Sharma"
+            },
+            {
+                "settlement_id": 44644,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 100.0,
+                "outstanding_amount": 71529.0,
+                "city": "Delhi",
+                "settlement_date": "2026-04-05T07:53:24.701995+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Mahesh Sharma"
+            },
+            {
+                "settlement_id": 44642,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 100.0,
+                "outstanding_amount": 71529.0,
+                "city": "Delhi",
+                "settlement_date": "2026-04-05T07:51:29.737534+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Mahesh Sharma"
+            },
+            {
+                "settlement_id": 44640,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 100.0,
+                "outstanding_amount": 71529.0,
+                "city": "Delhi",
+                "settlement_date": "2026-04-05T07:47:39.900717+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Mahesh Sharma"
+            },
+            {
+                "settlement_id": 44638,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 2050.0,
+                "outstanding_amount": 69579.0,
+                "city": "Delhi",
+                "settlement_date": "2026-04-05T01:36:22.703890+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Aryan Hayaran"
+            },
+            {
+                "settlement_id": 44635,
+                "darkstore_id": 74,
+                "darkstore_name": "preprod_expresshub_test",
+                "settlement_amount": 1.0,
+                "outstanding_amount": 102.0,
+                "city": "Gurugram",
+                "settlement_date": "2026-03-18T01:32:27.583899+05:30",
+                "status": "approved",
+                "settlement_medium": "static_qr",
+                "rider_name": "Shubham MarchTwoSix"
+            },
+            {
+                "settlement_id": 44633,
+                "darkstore_id": 74,
+                "darkstore_name": "preprod_expresshub_test",
+                "settlement_amount": 1.0,
+                "outstanding_amount": 103.0,
+                "city": "Gurugram",
+                "settlement_date": "2026-03-18T01:28:49.161907+05:30",
+                "status": "approved",
+                "settlement_medium": "upi",
+                "rider_name": "Shubham MarchTwoSix"
+            },
+            {
+                "settlement_id": 44629,
+                "darkstore_id": 38,
+                "darkstore_name": "ludhiana",
+                "settlement_amount": 4.0,
+                "outstanding_amount": -4.0,
+                "city": "Ludhiana",
+                "settlement_date": "2026-03-18T01:22:18.857631+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Shubham MarchTwoSix"
+            },
+            {
+                "settlement_id": 44626,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 100.0,
+                "outstanding_amount": 71529.0,
+                "city": "Delhi",
+                "settlement_date": "2026-03-17T10:52:21.917815+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Hardik Singh"
+            },
+            {
+                "settlement_id": 44624,
+                "darkstore_id": 44,
+                "darkstore_name": "okhla 2hr",
+                "settlement_amount": 100.0,
+                "outstanding_amount": 71529.0,
+                "city": "Delhi",
+                "settlement_date": "2026-03-17T10:45:33.256033+05:30",
+                "status": "approved",
+                "settlement_medium": "dynamic_qr",
+                "rider_name": "Hardik Singh"
+            },
+            {
+                "settlement_id": 44617,
+                "darkstore_id": 1,
+                "darkstore_name": "andheri",
+                "settlement_amount": 100.0,
+                "outstanding_amount": 10555510.0,
+                "city": "Mumbai",
+                "settlement_date": "2026-03-16T00:00:00+05:30",
+                "status": "redo",
+                "settlement_medium": "cash",
+                "rider_name": null
+            },
+            {
+                "settlement_id": 44616,
+                "darkstore_id": 1,
+                "darkstore_name": "andheri",
+                "settlement_amount": 100.0,
+                "outstanding_amount": 10555610.0,
+                "city": "Mumbai",
+                "settlement_date": "2026-03-16T00:00:00+05:30",
+                "status": "rejected",
+                "settlement_medium": "cash",
+                "rider_name": null
+            }
+        ]
+    },
+    "message": "Settlements fetched successfully",
+    "status": "success",
+    "result": true
+}
+
+https://preprod.api.zfwhospitality.in/app/api/settlements/brand/?page=1&page_size=10&status=
+{
+    "data": {
+        "next": "https://preprod.api.zfwhospitality.in/app/api/settlements/brand/?page=2&page_size=10&status=",
+        "previous": null,
+        "total": 80,
+        "total_pages": 8,
+        "page": 1,
+        "page_size": 10,
+        "results": [
+            {
+                "brand_id": 10,
+                "brand_name": "Gadre Marine",
+                "settled_amount": 0,
+                "total_outstanding": 2808275,
+                "total_amount": 2808275,
+                "status": "pending",
+                "settlement_id": null,
+                "outstanding_amount": null
+            },
+            {
+                "brand_id": 13,
+                "brand_name": "Roger Motors",
+                "settled_amount": 0,
+                "total_outstanding": 8938922,
+                "total_amount": 8938922,
+                "status": "pending",
+                "settlement_id": null,
+                "outstanding_amount": null
+            },
+            {
+                "brand_id": 14,
+                "brand_name": "Meisterwurst",
+                "settled_amount": 0,
+                "total_outstanding": 61480,
+                "total_amount": 61480,
+                "status": "pending",
+                "settlement_id": null,
+                "outstanding_amount": null
+            },
+            {
+                "brand_id": 16,
+                "brand_name": "Cremeitalia",
+                "settled_amount": 0,
+                "total_outstanding": 933793,
+                "total_amount": 933793,
+                "status": "pending",
+                "settlement_id": null,
+                "outstanding_amount": null
+            },
+            {
+                "brand_id": 20,
+                "brand_name": "ThatSassy Thing",
+                "settled_amount": 0,
+                "total_outstanding": 106636,
+                "total_amount": 106636,
+                "status": "pending",
+                "settlement_id": null,
+                "outstanding_amount": null
+            },
+            {
+                "brand_id": 22,
+                "brand_name": "Dancing cow",
+                "settled_amount": 0,
+                "total_outstanding": 119480,
+                "total_amount": 119480,
+                "status": "pending",
+                "settlement_id": null,
+                "outstanding_amount": null
+            },
+            {
+                "brand_id": 23,
+                "brand_name": "Frido",
+                "settled_amount": 0,
+                "total_outstanding": 4742,
+                "total_amount": 4742,
+                "status": "pending",
+                "settlement_id": null,
+                "outstanding_amount": null
+            },
+            {
+                "brand_id": 33,
+                "brand_name": "Bombucha",
+                "settled_amount": 0,
+                "total_outstanding": 397098,
+                "total_amount": 397098,
+                "status": "pending",
+                "settlement_id": null,
+                "outstanding_amount": null
+            },
+            {
+                "brand_id": 37,
+                "brand_name": "Goofytails",
+                "settled_amount": 0,
+                "total_outstanding": 26946,
+                "total_amount": 26946,
+                "status": "pending",
+                "settlement_id": null,
+                "outstanding_amount": null
+            },
+            {
+                "brand_id": 42,
+                "brand_name": "Matsyaveda",
+                "settled_amount": 0,
+                "total_outstanding": 8621,
+                "total_amount": 8621,
+                "status": "pending",
+                "settlement_id": null,
+                "outstanding_amount": null
+            }
+        ]
+    },
+    "message": "Brand settlements fetched successfully.",
+    "status": "success",
+    "result": true
+}
