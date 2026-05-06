@@ -2,6 +2,7 @@
 BasePage — all page objects inherit from this.
 Uses Playwright's built-in expect() for auto-retry assertions (no manual sleep/poll).
 """
+import re
 import allure
 from playwright.sync_api import Page, expect, Locator
 
@@ -29,8 +30,11 @@ class BasePage:
 
     # ── Waits ─────────────────────────────────────────────────────────────────
 
-    def wait_for_network_idle(self):
-        self.page.wait_for_load_state("networkidle")
+    def wait_for_network_idle(self, timeout: int = 3000):
+        # React SPAs never reach networkidle due to background polling.
+        # Short debounce + spinner wait is a reliable alternative.
+        self.page.wait_for_timeout(500)
+        self.wait_for_spinner_gone(timeout=timeout)
 
     def wait_for_spinner_gone(self, timeout: int = 15000):
         try:
@@ -84,7 +88,13 @@ class BasePage:
         expect(self.page.locator(selector)).to_contain_text(text, timeout=timeout)
 
     def expect_url(self, path: str, timeout: int = 10000):
-        expect(self.page).to_have_url(f"**{path}**", timeout=timeout)
+        # Regex so trailing slash is optional: matches /brand and /brand/
+        normalized = path.rstrip("/")
+        expect(self.page).to_have_url(re.compile(re.escape(normalized) + r"/?$"), timeout=timeout)
+
+    def expect_row_count(self, count: int, row_selector: str = "tbody tr", timeout: int = 8000):
+        """Auto-retrying row count assertion — safe for async React table updates."""
+        expect(self.page.locator(row_selector)).to_have_count(count, timeout=timeout)
 
     def expect_count_gte(self, selector: str, minimum: int):
         count = self.page.locator(selector).count()

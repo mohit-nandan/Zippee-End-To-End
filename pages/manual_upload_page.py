@@ -18,8 +18,11 @@ class ManualUploadPage(BasePage):
     SORT_RIDER      = "th:has-text('Rider Username')"
 
     def is_loaded(self) -> bool:
-        self.wait_for_spinner_gone()
-        return self.is_visible(self.HEADING)
+        try:
+            self.expect_visible(self.HEADING, timeout=15000)
+            return True
+        except Exception:
+            return False
 
     def search_order_id(self, order_id: str):
         self.page.locator(self.ORDER_ID_SEARCH).fill(order_id)

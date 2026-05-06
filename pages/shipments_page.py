@@ -29,7 +29,11 @@ class ShipmentsPage(BasePage):
     }
 
     def is_loaded(self) -> bool:
-        return self.is_visible(self.STAT_TOTAL)
+        try:
+            self.expect_visible(self.STAT_TOTAL, timeout=15000)
+            return True
+        except Exception:
+            return False
 
     def get_total_count(self) -> int:
         try:
@@ -69,3 +73,33 @@ class ShipmentsPage(BasePage):
 
     def click_refire(self):
         self.page.locator(self.REFIRE_BTN).click()
+
+    # ── Bifrost / Middleware methods ──────────────────────────────────────────
+
+    def click_shipments_tab(self, timeout: int = 20000) -> "Response":
+        """
+        cy.intercept("GET", BifrostRoutes.Shipments).as("shipments");
+        cy.get(".sidebar").realHover("left").then(() => {
+            cy.contains("span", "Middleware").should("be.visible").realHover().click();
+        })
+        cy.contains("Shipments").should("be.visible").click();
+        cy.wait("@shipments", { timeout: 20000 }).its("response.statusCode").should("eq", 200);
+        cy.get("table tbody tr").should("have.length.greaterThan", 0);
+        """
+        from playwright.sync_api import expect
+        import re
+        with self.page.expect_response(
+            lambda r: "/api/1/middleware/shipment/" in r.url and r.request.method == "GET",
+            timeout=timeout
+        ) as resp_info:
+            item = self.page.locator(".sidebar").get_by_text(re.compile(r"^\s*Shipments?\s*$", re.IGNORECASE)).last
+            try:
+                item.wait_for(state="attached", timeout=2000)
+            except Exception:
+                self.page.locator("text='Middleware'").first.evaluate("node => node.click()")
+                self.page.wait_for_timeout(500)
+            
+            item.evaluate("node => node.click()")
+
+        expect(self.page.locator("table tbody tr").first).to_be_visible(timeout=15000)
+        return resp_info.value

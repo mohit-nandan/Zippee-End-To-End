@@ -3,12 +3,26 @@ import pytest
 import allure
 from playwright.sync_api import sync_playwright
 from utils.config_loader import get_config
+from utils.helpers import get_screen_size
 
 
 @pytest.fixture(scope="session")
-def browser_instance():
+def screen_size() -> dict:
+    w, h = get_screen_size()
+    return {"width": w, "height": h}
+
+
+@pytest.fixture(scope="session")
+def browser_instance(screen_size):
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True, args=["--no-sandbox"])
+        browser = p.chromium.launch(
+            headless=False,
+            args=[
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+                f"--window-size={screen_size['width']},{screen_size['height']}",
+            ],
+        )
         yield browser
         browser.close()
 
@@ -20,19 +34,22 @@ def web_cfg():
 
 
 @pytest.fixture
-def page(browser_instance):
-    context = browser_instance.new_context(viewport={"width": 1440, "height": 900})
+def page(browser_instance, screen_size):
+    context = browser_instance.new_context(viewport=screen_size)
     page = context.new_page()
     yield page
     context.close()
 
 
 @pytest.fixture
-def authenticated_dashboard(page, web_cfg):
+def authenticated_dashboard(browser_instance, web_cfg, screen_size):
     """Logs in and yields a fully authenticated Playwright page."""
+    context = browser_instance.new_context(viewport=screen_size)
+    page = context.new_page()
     base = web_cfg["dashboard_url"].rstrip("/")
     page.goto(f"{base}/sign-in")
-    page.wait_for_load_state("networkidle")
+    page.wait_for_load_state("domcontentloaded")
+    page.locator("#email").wait_for(state="visible", timeout=15000)
 
     # Step 1 — enter email and continue
     page.locator("#email").fill(web_cfg["admin_user"])
@@ -42,10 +59,10 @@ def authenticated_dashboard(page, web_cfg):
     # Step 2 — enter password and login
     page.locator("input[type='password']").fill(web_cfg["admin_pass"])
     page.get_by_role("button", name="Login", exact=True).click()
-    page.wait_for_load_state("networkidle")
     page.wait_for_url(f"{base}/", timeout=15000)
 
     yield page
+    context.close()
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
