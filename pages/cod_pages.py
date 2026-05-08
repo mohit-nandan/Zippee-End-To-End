@@ -30,7 +30,7 @@ class CODAttendancePage:
         with self.page.expect_response(
             lambda r: "/app/api/global-filter/" in r.url
                       and "source=attendance" in r.url
-                      and r.request.method == "GET",
+                      and r.request.method == "POST",
             timeout=timeout,
         ) as resp_info:
             item = self.page.locator(".sidebar").get_by_text(

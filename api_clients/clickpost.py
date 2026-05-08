@@ -14,7 +14,9 @@ class ClickpostClient(BaseClient):
         self._shipment_password = shipment_password
 
     def push_order(self, payload: dict) -> dict:
-        return self.post("/api/v3/create-order/", json=payload, params={"username": self._shipment_username, "key": self._api_key})
+        # Clickpost always returns HTTP 200 regardless of success/failure;
+        # meta.success in the body is the real success indicator.
+        return self.post("/api/v3/create-order/", expected_status=200, json=payload, params={"username": self._shipment_username, "key": self._api_key})
 
     def get_tracking_status(self, waybill: str) -> dict:
         return self.get(f"/api/v2/track/", params={"username": self._shipment_username, "key": self._api_key, "waybill": waybill})
