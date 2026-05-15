@@ -34,6 +34,8 @@ class EmergencyCommsPage(BasePage):
     # API URL fragment for cy.intercept("GET", BaseRoutes.CommsLogs)
     COMMS_LOGS_API  = "/api/1/comms-logs/"
 
+
+
     # ── Page load check ───────────────────────────────────────────────────────
 
     def is_loaded(self) -> bool:

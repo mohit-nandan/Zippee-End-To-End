@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs -I {} basename {})",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(gh pr *)",
+      "PowerShell(winget *)",
+      "PowerShell(gh *)",
+      "Bash(python -m json.tool)",
+      "Bash(python *)",
+      "mcp__claude_ai_Atlassian__getJiraIssue",
+      "mcp__claude_ai_Atlassian__lookupJiraAccountId",
+      "mcp__claude_ai_Atlassian__createJiraIssue",
+      "mcp__claude_ai_Atlassian__createIssueLink"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "mysql-staging",
+    "mysql-preprod",
+    "mysql-prod"
+  ]
+}
