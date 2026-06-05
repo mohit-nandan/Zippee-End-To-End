@@ -1,10 +1,15 @@
 """
-Interactive order creator for fabbox brand across stg / preprod / prod.
-Prompts for: environment, WMS, payment mode, order count, pincode, barcodes.
+Order creator for fabbox brand across stg / preprod / prod.
+Runs interactively (no args) or non-interactively via CLI flags (for Jenkins / CI).
 
-Usage:
+Usage (interactive):
     python create_preprod_orders.py
+
+Usage (non-interactive / Jenkins):
+    python create_preprod_orders.py --env preprod --wms all --payment-mode both \
+        --count 1 --pincode 122008 --barcodes yes
 """
+import argparse
 import uuid
 import datetime
 import requests
@@ -147,6 +152,21 @@ def _ask_int(prompt: str, default: int, min_val: int = 1, max_val: int = 20) -> 
         print(f"  Enter a number between {min_val} and {max_val}.")
 
 
+def parse_args():
+    """Return parsed CLI args, or None if no args were passed (interactive mode)."""
+    import sys
+    if len(sys.argv) == 1:
+        return None
+    p = argparse.ArgumentParser(description="WMS Order Creator — fabbox brand")
+    p.add_argument("--env",          choices=["stg", "preprod", "prod"], default="preprod")
+    p.add_argument("--wms",          choices=["all", "clickpost", "uniware", "easycom"], default="all")
+    p.add_argument("--payment-mode", choices=["both", "prepaid", "cod"], default="both", dest="payment_mode")
+    p.add_argument("--count",        type=int, default=1, metavar="N")
+    p.add_argument("--pincode",      default="122008")
+    p.add_argument("--barcodes",     choices=["yes", "no"], default="yes")
+    return p.parse_args()
+
+
 def prompt_config() -> dict:
     print("=" * 55)
     print("  WMS Order Creator  —  fabbox brand")
@@ -154,7 +174,6 @@ def prompt_config() -> dict:
     print()
 
     env = _ask_choice("Environment?", ["stg", "preprod", "prod"], default="preprod")
-
 
     if env == "prod":
         print()
@@ -622,7 +641,25 @@ def create_easycom(is_cod: bool, pincode: str, env_cfg: dict) -> str:
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
-    cfg = prompt_config()
+    args = parse_args()
+    if args is not None:
+        cfg = {
+            "env":          args.env,
+            "wms":          args.wms,
+            "payment_mode": args.payment_mode,
+            "count":        args.count,
+            "pincode":      args.pincode,
+            "barcodes":     args.barcodes == "yes",
+        }
+        print("=" * 55)
+        print("  WMS Order Creator  —  fabbox brand  [CI/Jenkins mode]")
+        print("=" * 55)
+        for k, v in cfg.items():
+            print(f"  {k}: {v}")
+        print()
+    else:
+        cfg = prompt_config()
+
     env_cfg = ENVS[cfg["env"]]
 
     cp_token = uw_token = None

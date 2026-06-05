@@ -1,0 +1,89 @@
+pipeline {
+    agent any
+
+    parameters {
+        choice(
+            name: 'ENV',
+            choices: ['preprod', 'stg', 'prod'],
+            description: 'Target environment (prod will create REAL orders)'
+        )
+        choice(
+            name: 'WMS',
+            choices: ['all', 'clickpost', 'uniware', 'easycom'],
+            description: 'Which WMS to create orders in'
+        )
+        choice(
+            name: 'PAYMENT_MODE',
+            choices: ['both', 'prepaid', 'cod'],
+            description: 'Payment mode for the orders'
+        )
+        string(
+            name: 'COUNT',
+            defaultValue: '1',
+            description: 'Number of orders per type (1–20)'
+        )
+        string(
+            name: 'PINCODE',
+            defaultValue: '122008',
+            description: 'Delivery pincode'
+        )
+        choice(
+            name: 'BARCODES',
+            choices: ['yes', 'no'],
+            description: 'Generate barcode PDFs after order creation'
+        )
+    }
+
+    options {
+        timestamps()
+        buildDiscarder(logRotator(numToKeepStr: '30'))
+    }
+
+    stages {
+        stage('Validate') {
+            steps {
+                script {
+                    def count = params.COUNT.toInteger()
+                    if (count < 1 || count > 20) {
+                        error("COUNT must be between 1 and 20, got: ${params.COUNT}")
+                    }
+                    if (params.ENV == 'prod') {
+                        input message: "You are about to create REAL PRODUCTION orders. Continue?", ok: "Yes, create production orders"
+                    }
+                }
+            }
+        }
+
+        stage('Setup Python') {
+            steps {
+                sh '''
+                    python --version
+                    pip install -r requirements.txt --quiet
+                '''
+            }
+        }
+
+        stage('Create Orders') {
+            steps {
+                sh """
+                    python create_preprod_orders.py \
+                        --env ${params.ENV} \
+                        --wms ${params.WMS} \
+                        --payment-mode ${params.PAYMENT_MODE} \
+                        --count ${params.COUNT} \
+                        --pincode ${params.PINCODE} \
+                        --barcodes ${params.BARCODES}
+                """
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Orders created successfully on ${params.ENV}."
+        }
+        failure {
+            echo "Order creation FAILED. Check the console output above."
+        }
+    }
+}

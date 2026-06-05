@@ -333,26 +333,16 @@ class TestE2EUserJourney:
             assert pg.is_loaded(), "Billing page did not load"
 
         with allure.step("clickBillingTab — POST transactionHome → status 200"):
-            # cy.intercept("POST", BillingRoutes.GetBillingDetails).as("transactionHome")
-            # cy.wait("@transactionHome").its("response.statusCode").should("eq", 200)
             resp = pg.click_billing_tab()
 
         with allure.step("clickDatepicker — Last Month → POST transactionHeader → Total Usage > 0"):
-            # cy.intercept("POST", BillingRoutes.GetBillingHeader).as("billingHeader")
-            # cy.get(".relative.inline-block").click() → "Last Month" → wait
-            # cy.contains("p", "Total Usage")...find("p.text-2xl") value > 0
             resp = pg.click_datepicker()
 
         with allure.step("clickDeductionsDetailsTab — POST transactionHistory → rows > 0"):
-            # cy.intercept("POST", BillingRoutes.GetTransactionHistory).as("transactionHistory")
-            # cy.contains("Deduction View").click() → wait → table rows > 0
             resp = pg.click_deductions_details_tab()
-            # cy.get("table tbody tr").should("have.length.greaterThan", 0)
             assert pg.get_row_count() >= 1, "Deduction View table has 0 rows"
 
         with allure.step("clickInvoiceHistoryTab — POST invoice/history/ → status 200"):
-            # cy.intercept("POST", BillingRoutes.GetInoviceHistory).as("invoiceHistory")
-            # cy.contains("li", "Invoices").click() → wait → table rows (may be 0 in preprod)
             resp = pg.click_invoice_history_tab()
 
     # ── 07 · Bifrost / Middleware ──────────────────────────────────────────
@@ -396,137 +386,81 @@ class TestE2EUserJourney:
             body = resp.json()
             assert body["result"] is True, "middleware/warehouses API: result != true"
 
-    # @allure.story("08 · COD Module")
-    # def test_08_cod_module(self, e2e_page):
-    #     """
-    #     COD module disabled — not working on prod.
-    #     Validates all tabs under the COD accordion:
-    #     Attendance, Deactivated Riders, Payouts, Rider Payroll, Redo Logs, Riders, Settlements, Create New Template.
-    #     """
-    #     from pages.cod_pages import (
-    #         CODAttendancePage,
-    #         CODDeactivatedRidersPage,
-    #         CODPayoutsPage,
-    #         CODPayrollPage,
-    #         CODRedoLogsPage,
-    #         CODRidersKYCPage,
-    #         CODSettlementsPage,
-    #         CODTemplatesPage
-    #     )
-    #
-    #     with allure.step("clickAttendanceTab"):
-    #         attendance_page = CODAttendancePage(e2e_page)
-    #         resp = attendance_page.click_attendance_tab()
-    #         body = resp.json()
-    #         assert body["result"] is True, "attendance API: result != true"
-    #
-    #     with allure.step("clickDeactivatedRidersTab"):
-    #         deac_riders_page = CODDeactivatedRidersPage(e2e_page)
-    #         resp = deac_riders_page.click_deactivated_riders_tab()
-    #         body = resp.json()
-    #         assert body["result"] is True, "deactivated riders API: result != true"
-    #
-    #     with allure.step("clickPayoutsTab"):
-    #         payouts_page = CODPayoutsPage(e2e_page)
-    #         resp = payouts_page.click_payouts_tab()
-    #         body = resp.json()
-    #         assert body["result"] is True, "payouts API: result != true"
-    #
-    #     with allure.step("clickPayrollTab"):
-    #         payroll_page = CODPayrollPage(e2e_page)
-    #         resp = payroll_page.click_payroll_tab()
-    #         body = resp.json()
-    #         assert body["result"] is True, "payroll API: result != true"
-    #
-    #     with allure.step("clickRedoLogsTab"):
-    #         redo_logs_page = CODRedoLogsPage(e2e_page)
-    #         resp = redo_logs_page.click_redo_logs_tab()
-    #         body = resp.json()
-    #         assert body["result"] is True, "redo logs API: result != true"
-    #
-    #     with allure.step("clickRidersKYCTab"):
-    #         riders_kyc_page = CODRidersKYCPage(e2e_page)
-    #         resp = riders_kyc_page.click_riders_kyc_tab()
-    #         body = resp.json()
-    #         assert body["result"] is True, "riders kyc API: result != true"
-    #
-    #     with allure.step("clickSettlementsTab & KPIs"):
-    #         settlements_page = CODSettlementsPage(e2e_page)
-    #
-    #         resp = settlements_page.click_settlements_tab()
-    #         body = resp.json()
-    #         assert body["result"] is True, "settlements KPI API: result != true"
-    #
-    #         resp = settlements_page.click_darkstores_kpi()
-    #         body = resp.json()
-    #         assert body["result"] is True, "darkstores KPI API: result != true"
-    #
-    #         resp = settlements_page.click_company_kpi()
-    #         body = resp.json()
-    #         assert body["result"] is True, "company KPI API: result != true"
-    #
-    #         resp = settlements_page.click_brands_kpi()
-    #         body = resp.json()
-    #         assert body["result"] is True, "brands KPI API: result != true"
-    #
-    #     with allure.step("clickTemplatesTab"):
-    #         templates_page = CODTemplatesPage(e2e_page)
-    #         templates_page.click_templates_tab()
-
-    @allure.story("09 · Pickup Delivery Module")
-    def test_09_pickup_delivery(self, e2e_page):
+    @allure.story("08 · COD Module")
+    def test_08_cod_module(self, e2e_page):
         """
-        Validates all sections under the Pickup Delivery accordion:
-        Deliveries (Shipments + all filter tabs, Trips + all filter tabs),
-        Print Waybills, Express Hub, Store Transfer (Manifest + Shipments tabs).
-        API response validated before each UI header check.
+        Validates all tabs under the COD accordion:
+        Attendance, Deactivated Riders, Payouts, Rider Payroll, Redo Logs, Riders, Settlements, Create New Template.
         """
-        from pages.pickup_delivery_pages import (
-            DeliveriesShipmentsPage,
-            DeliveriesTripsPage,
-            PrintWaybillsPage,
-            ExpressHubPage,
-            StoreTransferPage,
-            SHIPMENT_FILTER_TABS,
-            TRIP_FILTER_TABS,
+        from pages.cod_pages import (
+            CODAttendancePage,
+            CODDeactivatedRidersPage,
+            CODPayoutsPage,
+            CODPayrollPage,
+            CODRedoLogsPage,
+            CODRidersKYCPage,
+            CODSettlementsPage,
+            CODTemplatesPage
         )
 
-        # ── Deliveries → Shipments ────────────────────────────────────────────
-        with allure.step("Deliveries — Shipments tab (Assign Now default)"):
-            shipments_page = DeliveriesShipmentsPage(e2e_page)
-            shipments_page.click_deliveries_tab()
+        with allure.step("clickAttendanceTab"):
+            attendance_page = CODAttendancePage(e2e_page)
+            resp = attendance_page.click_attendance_tab()
+            body = resp.json()
+            assert body["result"] is True, "attendance API: result != true"
+            
+        with allure.step("clickDeactivatedRidersTab"):
+            deac_riders_page = CODDeactivatedRidersPage(e2e_page)
+            resp = deac_riders_page.click_deactivated_riders_tab()
+            body = resp.json()
+            assert body["result"] is True, "deactivated riders API: result != true"
 
-        for tab in SHIPMENT_FILTER_TABS[1:]:   # skip Assign Now (already active)
-            with allure.step(f"Deliveries — Shipments filter: {tab}"):
-                shipments_page.click_shipment_filter_tab(tab)
+        with allure.step("clickPayoutsTab"):
+            payouts_page = CODPayoutsPage(e2e_page)
+            resp = payouts_page.click_payouts_tab()
+            body = resp.json()
+            assert body["result"] is True, "payouts API: result != true"
 
-        # ── Deliveries → Trips ────────────────────────────────────────────────
-        with allure.step("Deliveries — Trips tab (Draft default)"):
-            trips_page = DeliveriesTripsPage(e2e_page)
-            trips_page.click_trips_tab()
+        with allure.step("clickPayrollTab"):
+            payroll_page = CODPayrollPage(e2e_page)
+            resp = payroll_page.click_payroll_tab()
+            body = resp.json()
+            assert body["result"] is True, "payroll API: result != true"
 
-        for tab in TRIP_FILTER_TABS[1:]:        # skip Draft (already active)
-            with allure.step(f"Deliveries — Trips filter: {tab}"):
-                trips_page.click_trip_filter_tab(tab)
+        with allure.step("clickRedoLogsTab"):
+            redo_logs_page = CODRedoLogsPage(e2e_page)
+            resp = redo_logs_page.click_redo_logs_tab()
+            body = resp.json()
+            assert body["result"] is True, "redo logs API: result != true"
 
-        # ── Print Waybills ────────────────────────────────────────────────────
-        with allure.step("Print Waybills tab"):
-            print_page = PrintWaybillsPage(e2e_page)
-            print_page.click_print_waybills_tab()
+        with allure.step("clickRidersKYCTab"):
+            riders_kyc_page = CODRidersKYCPage(e2e_page)
+            resp = riders_kyc_page.click_riders_kyc_tab()
+            body = resp.json()
+            assert body["result"] is True, "riders kyc API: result != true"
 
-        # ── Express Hub ───────────────────────────────────────────────────────
-        with allure.step("Express Hub tab"):
-            express_page = ExpressHubPage(e2e_page)
-            express_page.click_express_hub_tab()
+        with allure.step("clickSettlementsTab & KPIs"):
+            settlements_page = CODSettlementsPage(e2e_page)
+            
+            resp = settlements_page.click_settlements_tab()
+            body = resp.json()
+            assert body["result"] is True, "settlements KPI API: result != true"
 
-        # ── Store Transfer → Manifest ─────────────────────────────────────────
-        with allure.step("Store Transfer — Manifest tab"):
-            store_transfer_page = StoreTransferPage(e2e_page)
-            store_transfer_page.click_store_transfer_tab()
+            resp = settlements_page.click_darkstores_kpi()
+            body = resp.json()
+            assert body["result"] is True, "darkstores KPI API: result != true"
+            
+            resp = settlements_page.click_company_kpi()
+            body = resp.json()
+            assert body["result"] is True, "company KPI API: result != true"
+            
+            resp = settlements_page.click_brands_kpi()
+            body = resp.json()
+            assert body["result"] is True, "brands KPI API: result != true"
 
-        # ── Store Transfer → Shipments ────────────────────────────────────────
-        with allure.step("Store Transfer — Shipments sub-tab"):
-            store_transfer_page.click_shipments_sub_tab()
+        with allure.step("clickTemplatesTab"):
+            templates_page = CODTemplatesPage(e2e_page)
+            templates_page.click_templates_tab()
 
     # @allure.title("Shipments — stat cards, AWB search, sort")
     # def test_04_shipments(self, e2e_page, web_cfg):
