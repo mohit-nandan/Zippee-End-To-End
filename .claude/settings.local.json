@@ -14,12 +14,29 @@
       "mcp__claude_ai_Atlassian__getJiraIssue",
       "mcp__claude_ai_Atlassian__lookupJiraAccountId",
       "mcp__claude_ai_Atlassian__createJiraIssue",
-      "mcp__claude_ai_Atlassian__createIssueLink"
+      "mcp__claude_ai_Atlassian__createIssueLink",
+      "mcp__claude_ai_Atlassian__getAccessibleAtlassianResources",
+      "mcp__claude_ai_Atlassian__getIssueLinkTypes",
+      "Read(//c/Users/User/**)",
+      "Read(//c/ProgramData/**)",
+      "Read(//c/Windows/**)",
+      "PowerShell(cmd /c \"dir C:\\\\ProgramData /b 2>&1\")",
+      "PowerShell(cmd /c \"dir \"\"C:\\\\Program Files\"\" /b 2>&1\"; cmd /c \"dir \"\"C:\\\\Program Files \\(x86\\)\"\" /b 2>&1\")",
+      "PowerShell(cmd /c \"dir C:\\\\Users\\\\User\\\\.jenkins\\\\secrets /b 2>&1\")",
+      "PowerShell(cmd /c \"type C:\\\\Users\\\\User\\\\.jenkins\\\\secrets\\\\initialAdminPassword\")",
+      "PowerShell(cmd /c \"sc query Jenkins 2>&1\")",
+      "PowerShell(cmd /c \"where jenkins 2>&1\"; cmd /c \"dir C:\\\\Users\\\\User\\\\.jenkins\\\\*.war 2>&1\"; cmd /c \"dir C:\\\\Users\\\\User\\\\.jenkins\\\\*.jar 2>&1\")",
+      "PowerShell(cmd /c \"netstat -ano | findstr :8080 2>&1\")",
+      "PowerShell(cmd /c \"java -version 2>&1\")",
+      "PowerShell(Start-Process -FilePath \"java\" -ArgumentList \"-jar\", \"C:\\\\Users\\\\User\\\\Downloads\\\\jenkins.war\", \"--httpPort=8080\" -NoNewWindow -PassThru)",
+      "PowerShell(cmd /c \"curl -s -o nul -w \"\"%{http_code}\"\" http://localhost:8080 2>&1\")"
     ]
   },
   "enabledMcpjsonServers": [
     "mysql-staging",
     "mysql-preprod",
-    "mysql-prod"
+    "mysql-prod",
+    "maestro",
+    "figma"
   ]
 }
