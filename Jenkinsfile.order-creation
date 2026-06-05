@@ -56,7 +56,7 @@ pipeline {
 
         stage('Setup Python') {
             steps {
-                sh '''
+                bat '''
                     python --version
                     pip install -r requirements.txt --quiet
                 '''
@@ -65,13 +65,13 @@ pipeline {
 
         stage('Create Orders') {
             steps {
-                sh """
-                    python create_preprod_orders.py \
-                        --env ${params.ENV} \
-                        --wms ${params.WMS} \
-                        --payment-mode ${params.PAYMENT_MODE} \
-                        --count ${params.COUNT} \
-                        --pincode ${params.PINCODE} \
+                bat """
+                    python create_preprod_orders.py ^
+                        --env ${params.ENV} ^
+                        --wms ${params.WMS} ^
+                        --payment-mode ${params.PAYMENT_MODE} ^
+                        --count ${params.COUNT} ^
+                        --pincode ${params.PINCODE} ^
                         --barcodes ${params.BARCODES}
                 """
             }
