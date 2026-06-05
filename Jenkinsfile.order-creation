@@ -81,11 +81,13 @@ pipeline {
     post {
         success {
             echo "Orders created successfully on ${params.ENV}."
-            archiveArtifacts artifacts: '..\\awb_barcodes\\*.png', allowEmptyArchive: true
+            bat 'if exist "..\\awb_barcodes" xcopy /Y /I "..\\awb_barcodes\\*.png" "awb_barcodes\\"'
+            archiveArtifacts artifacts: 'awb_barcodes/*.png', allowEmptyArchive: true
         }
         failure {
             echo "Order creation FAILED. Check the console output above."
-            archiveArtifacts artifacts: '..\\awb_barcodes\\*.png', allowEmptyArchive: true
+            bat 'if exist "..\\awb_barcodes" xcopy /Y /I "..\\awb_barcodes\\*.png" "awb_barcodes\\"'
+            archiveArtifacts artifacts: 'awb_barcodes/*.png', allowEmptyArchive: true
         }
     }
 }
