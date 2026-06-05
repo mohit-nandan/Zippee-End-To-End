@@ -58,7 +58,7 @@ pipeline {
             steps {
                 bat '''
                     python --version
-                    pip install -r requirements.txt --quiet
+                    pip install requests python-dotenv python-barcode Pillow --quiet
                 '''
             }
         }
